@@ -1,0 +1,74 @@
+@import url(../vendor/nomalize.css);
+@import url(../fonts/font.css);
+.page {
+  width: 100%;
+  background-color:#000;
+}
+.header {
+  width: 880px;
+  padding: 42px 0 40px 0;
+  margin: 0 auto;
+  border-bottom: 1px solid #545454;
+}
+.header__logo {
+  width: 142px;
+}
+.content {
+  width: 880px;
+  margin: 40px auto 0;
+}
+.profile {
+  display: flex;
+  flex-direction: row;
+}
+.profile__pic {
+  width: 120px;
+  border-radius: 50%;
+  height: 120px;
+}
+.profile__info {
+  margin: 0 18px 0 30px;
+  padding: 22px 0 25px 0;
+  width: 294px;
+}
+.profile__name {
+  width: 294px;
+  font-family: 'Inter';
+  font-weight: 500;
+  font-size: 42px;
+  line-height: 48px;
+  color: #fff;
+  margin: 0 0 16px 0;
+}
+.profile__description {
+  width: 336px;
+  font-family: 'Inter';
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  color: #fff;
+  margin: 0;
+}
+.profile__edit {
+  width: 24px;
+  height: 24px;
+  background-image: url(../images/edit-button.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #000;
+  margin: 37px 0 0 0;
+  border: 1px solid #fff;
+  cursor: pointer;
+}
+.profile__add-card {
+  width: 150px;
+  height: 50px;
+  background-color: #000;
+  border: 1px solid #fff;
+  cursor: pointer;
+  background-image: url(../images/add-button.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  align-self: center;
+  margin-inline-start: auto;
+}
