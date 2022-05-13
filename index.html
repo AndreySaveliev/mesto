@@ -13,7 +13,7 @@
       <img class="header__logo" src="./images/header-logo.svg" alt="логотип">
     </header>
     <main class="content">
-      <content class="profile">
+      <section class="profile">
         <img class="profile__pic" src="./images/profile-pic.jpg" alt="фото профиля">
         <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -21,8 +21,8 @@
         </div>
         <button class="profile__edit"></button>
         <button class="profile__add-card">+</button>
-      </content>
-      <content class="cells-grid">
+      </section>
+      <section class="cells-grid">
         <div class="grid__cell">
           <img class="cell__img" src="./images/disneyland.jpg">
           <div class="cell__description">
@@ -65,7 +65,15 @@
             <button class="cell__like">
           </div>
         </div>
-      </content>
+      </section>
+      <section class="popup">
+        <div class="popup__container">
+          <h2 class="popup__title">Редактировать профиль</h2>
+          <input type="text" class="input__name">
+          <input type="text" class="input__description">
+          <button class="submit-button">Сохранить</button>
+        </div>
+      </section>
     </main>
     <footer class="footer">
       <p class="footer__text">© 2020 Mesto Russia</p>

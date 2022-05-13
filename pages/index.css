@@ -101,10 +101,14 @@
 }
 .cell__name {
   font-family: 'Inter';
+  width: 200px;
   font-weight: 900;
   font-size: 24px;
   line-height: 29px;
   margin-left: 21px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 .cell__like {
   width: 22px;
@@ -128,4 +132,68 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 22px;
+}
+.popup {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  display: flex;
+}
+.popup {
+  display: none;
+}
+.popup::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  opacity: 0.5;
+}
+.popup__container {
+  width: 430px;
+  height: 330px;
+  background-color: #fff;
+  z-index: 2;
+  margin: 100px auto;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+}
+.popup__title {
+  margin: 0 64px 54px 36px;
+  padding: 34px 0 0 0;
+  font-family: 'Inter';
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 29px;
+  color: #000;
+}
+.input__name {
+  width: 358px;
+  height: 27px;
+  margin: 0 36px 30px 36px;
+  padding: 0;
+  border-width: 0 0 1px 0;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+.input__description {
+  width: 358px;
+  height: 27px;
+  margin: 0 36px 48px 36px;
+  padding: 0;
+  border-width: 0 0 1px 0;
+  border-color: rgba(0, 0, 0, 0.2);
+}
+.submit-button {
+  width: 358px;
+  height: 50px;
+  background-color: #000;
+  color: #fff;
+  border: 0;
+  padding: 0;
+  margin: 0 36px 37px 36px;
+  cursor: pointer;
 }
