@@ -140,9 +140,11 @@
   top: 0;
   left: 0;
   z-index: 2;
+  display: none;
+}
+.popup_opened {
   display: flex;
 }
-
 .popup::after {
   content: '';
   position: absolute;
