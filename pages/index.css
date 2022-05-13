@@ -142,6 +142,9 @@
   z-index: 2;
   display: flex;
 }
+.popup {
+  display: none;
+}
 .popup::after {
   content: '';
   position: absolute;
