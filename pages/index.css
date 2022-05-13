@@ -142,9 +142,7 @@
   z-index: 2;
   display: flex;
 }
-.popup {
-  display: none;
-}
+
 .popup::after {
   content: '';
   position: absolute;
@@ -154,6 +152,7 @@
   opacity: 0.5;
 }
 .popup__container {
+  position: relative;
   width: 430px;
   height: 330px;
   background-color: #fff;
@@ -187,7 +186,7 @@
   border-width: 0 0 1px 0;
   border-color: rgba(0, 0, 0, 0.2);
 }
-.submit-button {
+.popup__submit-button {
   width: 358px;
   height: 50px;
   background-color: #000;
@@ -196,4 +195,14 @@
   padding: 0;
   margin: 0 36px 37px 36px;
   cursor: pointer;
+}
+.popup__close-button {
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  background-image: url(../images/close-button.svg);
+  background-color: transparent;
+  border: 0;
+  top: -40px;
+  right: -40px;
 }
