@@ -3,5 +3,9 @@
   flex-direction: row;
   width: max-content;
   margin: auto;
-  padding-left: 13.5px;
+}
+@media screen and (max-width=1279){
+  .profile__edit {
+    padding-left: 13.5px;
+  }
 }
