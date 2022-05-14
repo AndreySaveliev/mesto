@@ -1,0 +1,18 @@
+.input__name {
+  width: 358px;
+  height: 27px;
+  margin: 0 36px 30px 36px;
+  border-width: 0 0 1px 0;
+  border-color: rgba(0, 0, 0, 0.2);
+  font-family: 'Inter';
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 17px;
+  padding: 0;
+}
+@media screen and (max-width: 1279px) { 
+  .input__name {
+    width: 238px;
+    margin: 0 22px 30px 22px;
+  }
+}

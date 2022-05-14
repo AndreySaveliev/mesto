@@ -1,0 +1,13 @@
+.cell__img {
+  width: 282px;
+  height: 282px;
+  grid-row: 1/2;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+}
+
+@media screen and (max-width: 1279px) { 
+  .cell__img {
+  
+  }
+}
