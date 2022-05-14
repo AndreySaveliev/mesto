@@ -1,0 +1,7 @@
+.profile__edit {
+  display: flex;
+  flex-direction: row;
+  width: max-content;
+  margin: auto;
+  padding-left: 13.5px;
+}
