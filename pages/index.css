@@ -132,6 +132,9 @@
 .cell__like:hover {
   opacity: 0.5;
 }
+.liked {
+  background-image: url(../images/liked.svg);
+}
 .footer {
   width: 880px;
   margin: 0 auto;
@@ -152,10 +155,10 @@
   top: 0;
   left: 0;
   z-index: 2;
-  display: flex;
-}
-.popup {
   display: none;
+}
+.popup_opened {
+  display: flex;
 }
 .popup::after {
   content: '';
@@ -188,7 +191,7 @@
   width: 358px;
   height: 27px;
   margin: 0 36px 30px 36px;
-  padding: 0;
+  padding: 0 ;
   border-width: 0 0 1px 0;
   border-color: rgba(0, 0, 0, 0.2);
 }
