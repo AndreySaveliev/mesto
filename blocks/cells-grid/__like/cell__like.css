@@ -1,0 +1,17 @@
+.cell__like {
+  width: 22px;
+  height: 19px;
+  align-self: center;
+  margin: 20px 20px 30px 0;
+  border: none;
+  background-color: transparent;
+  background-image: url(../../../images/like-button.svg);
+  cursor: pointer;
+  transition: 0.2s;
+}
+.cell__like:hover {
+  opacity: 0.5;
+}
+.liked {
+  background-image: url(../../../images/liked.svg);
+}
