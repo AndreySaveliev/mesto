@@ -1,4 +1,4 @@
-.cells-grid {
+.grid__cells {
   display: grid;
   grid-template-rows: repeat(2, 362px);
   grid-template-columns: repeat(3, 282px);
@@ -8,7 +8,7 @@
 }
 
 @media screen and (max-width: 1279px) { 
-  .cells-grid {
+  .grid__cells {
     grid-template-columns: 282px;
     grid-template-rows: repeat(6, 361px);
     width: 282px;

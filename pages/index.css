@@ -1,11 +1,11 @@
 @import url(../vendor/nomalize.css);
 @import url(../fonts/font.css);
-@import url(../blocks/cells-grid/__cell/grid__cell.css);
-@import url(../blocks/cells-grid/__description/cell__desription.css);
-@import url(../blocks/cells-grid/__img/cell__img.css);
-@import url(../blocks/cells-grid/__like/cell__like.css);
-@import url(../blocks/cells-grid/__name/cell__name.css);
-@import url(../blocks/cells-grid/cells-grid.css);
+@import url(../blocks/grid__cells/__cell/grid__cell.css);
+@import url(../blocks/grid__cells/__description/cell__desription.css);
+@import url(../blocks/grid__cells/__img/cell__img.css);
+@import url(../blocks/grid__cells/__like/cell__like.css);
+@import url(../blocks/grid__cells/__name/cell__name.css);
+@import url(../blocks/grid__cells/grid__cells.css);
 @import url(../blocks/content/content.css);
 @import url(../blocks/footer/__text/footer__text.css);
 @import url(../blocks/footer/footer.css);
