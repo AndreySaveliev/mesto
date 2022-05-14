@@ -1,4 +1,4 @@
-.cell__like {
+.grid__like {
   width: 22px;
   height: 19px;
   align-self: center;
@@ -9,7 +9,7 @@
   cursor: pointer;
   transition: 0.2s;
 }
-.cell__like:hover {
+.grid__like:hover {
   opacity: 0.5;
 }
 .liked {

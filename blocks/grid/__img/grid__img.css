@@ -1,4 +1,4 @@
-.cell__img {
+.grid__img {
   width: 282px;
   height: 282px;
   grid-row: 1/2;
@@ -7,7 +7,7 @@
 }
 
 @media screen and (max-width: 1279px) { 
-  .cell__img {
+  .grid__img {
   
   }
 }

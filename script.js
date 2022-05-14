@@ -7,7 +7,7 @@ let editProfileDescription = page.querySelector(".input__description");
 let profileName = page.querySelector(".profile__name");
 let profileDescription = page.querySelector(".profile__description");
 let submitButton = page.querySelector(".popup__submit-button");
-let likeButton = page.querySelectorAll(".cell__like");
+let likeButton = page.querySelectorAll(".grid__like");
 
 editName.value = profileName.textContent;
 editProfileDescription.value = profileDescription.textContent;
