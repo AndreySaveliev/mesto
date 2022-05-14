@@ -4,7 +4,7 @@
   width: max-content;
   margin: auto;
 }
-@media screen and (max-width=1279){
+@media screen and (max-width: 1279px){
   .profile__edit {
     padding-left: 13.5px;
   }
