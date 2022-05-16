@@ -7,7 +7,7 @@
   <title>Mesto</title>
   <link rel="stylesheet" href="./pages/index.css">
 </head>
-<body>
+<body class="body">
   <div class="page">
     <header class="header">
       <img class="header__logo" src="./images/header-logo.svg" alt="логотип">
@@ -18,63 +18,65 @@
         <div class="profile__info">
           <div class="profile__edit">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
-            <button class="profile__edit-button"></button>
+            <button type="button" class="profile__edit-button"></button>
           </div>
             <p class="profile__description">Исследователь океана</p>
         </div>
-        <button class="profile__add-card">+</button>
+        <button type="button" class="profile__add-card"></button>
       </section>
       <section class="grid">
         <div class="grid__cell">
           <img class="grid__img" src="./images/disneyland.jpg" alt="фото">
           <div class="grid__description">
-            <p class="grid__name">Диснейленд</p>
-            <button class="grid__like"></button>
+            <h2 class="grid__name">Диснейленд</h2>
+            <button type="button" class="grid__like"></button>
           </div>
         </div>
         <div class="grid__cell">
           <img class="grid__img" src="./images/dune.jpg" alt="фото">
           <div class="grid__description">
-            <p class="grid__name">Дюны</p>
-            <button class="grid__like"></button>
+            <h2 class="grid__name">Дюны</h2>
+            <button type="button" class="grid__like"></button>
           </div>
         </div>
         <div class="grid__cell">
           <img class="grid__img" src="./images/newyork.jpg" alt="фото">
           <div class="grid__description">
-            <p class="grid__name">Нью Йорк</p>
-            <button class="grid__like"></button>
+            <h2 class="grid__name">Нью Йорк</h2>
+            <button type="button" class="grid__like"></button>
           </div>
         </div>
         <div class="grid__cell">
           <img class="grid__img" src="./images/pantheon.jpg" alt="фото">
           <div class="grid__description">
-            <p class="grid__name">Пантенон</p>
-            <button class="grid__like"></button>
+            <h2 class="grid__name">Пантенон</h2>
+            <button type="button" class="grid__like"></button>
           </div>
         </div>
         <div class="grid__cell">
           <img class="grid__img" src="./images/Singapore.jpg" alt="фото">
           <div class="grid__description">
-            <p class="grid__name">Сингапур</p>
-            <button class="grid__like"></button>
+            <h2 class="grid__name">Сингапур</h2>
+            <button type="button" class="grid__like"></button>
           </div>
         </div>
         <div class="grid__cell">
           <img class="grid__img" src="./images/Turkey.jpg" alt="фото">
           <div class="grid__description">
-            <p class="grid__name">Турция</p>
-            <button class="grid__like"></button>
+            <h2 class="grid__name">Турция</h2>
+            <button type="button" class="grid__like"></button>
           </div>
         </div>
       </section>
       <section class="popup">
         <div class="popup__container">
-          <h2 class="popup__title">Редактировать профиль</h2>
-          <input type="text" class="popup__input-name" value="">
-          <input type="text" class="popup__input-description">
-          <button class="popup__submit-button">Сохранить</button>
-          <button class="popup__close-button"></button>
+          <h3 class="popup__title">Редактировать профиль</h3>
+          <button type="button" class="popup__close-button"></button>
+          <form class="popup__form">
+            <input type="text" name="name" class="popup__input popup__input-name" value="">
+            <input type="text" name="description" class="popup__input popup__input-description" value="">
+            <button type="submit" class="popup__submit-button">Сохранить</button>
+          </form>
         </div>
       </section>
     </main>
@@ -82,6 +84,6 @@
       <p class="footer__text">© 2020 Mesto Russia</p>
     </footer>
   </div>
-  <script src="./script.js"></script>
+  <script src="./scripts/script.js"></script>
 </body>
 </html>

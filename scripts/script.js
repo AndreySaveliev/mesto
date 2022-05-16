@@ -7,12 +7,11 @@ let editProfileDescription = page.querySelector(".popup__input-description");
 let profileName = page.querySelector(".profile__name");
 let profileDescription = page.querySelector(".profile__description");
 let submitButton = page.querySelector(".popup__submit-button");
-let likeButton = page.querySelectorAll(".grid__like");
-
-editName.value = profileName.textContent;
-editProfileDescription.value = profileDescription.textContent;
+let form = page.querySelector(".popup__form");
 
 function pupupOpen() {
+  editName.value = profileName.textContent;
+  editProfileDescription.value = profileDescription.textContent;
   popup.classList.add("popup_opened");
 }
 
@@ -20,24 +19,14 @@ function popupClose() {
   popup.classList.remove("popup_opened");
 }
 
-function popupSubmitClose() {
+function popupSubmitClose(event) {
+  event.preventDefault()
   profileName.textContent = editName.value;
   profileDescription.textContent = editProfileDescription.value;
   popupClose();
 }
 
-for (let i = 0; i < likeButton.length; i++) {
-  likeButton[i].addEventListener("click", liked);
-}
-
-function liked(event) {
-  if (event.target.classList.contains("liked")) {
-    event.target.classList.remove("liked");
-  } else {
-    event.target.classList.add("liked");
-  }
-}
-
 editButton.addEventListener("click", pupupOpen);
 closeButton.addEventListener("click", popupClose);
-submitButton.addEventListener("click", popupSubmitClose);
+form.addEventListener("submit", popupSubmitClose);
+

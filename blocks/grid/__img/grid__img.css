@@ -5,9 +5,3 @@
   object-fit: cover;
   border-radius: 10px 10px 0 0;
 }
-
-@media screen and (max-width: 1279px) { 
-  .grid__img {
-  
-  }
-}
