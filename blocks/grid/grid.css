@@ -1,6 +1,5 @@
 .grid {
   display: grid;
-  grid-template-rows: 362px;
   grid-auto-flow: row;
   grid-template-columns: repeat(3, 282px);
   row-gap: 17px;
@@ -8,10 +7,9 @@
   margin: 51px auto 67px;
 }
 
-@media screen and (max-width: 1279px) { 
+@media screen and (max-width: 1279px) {
   .grid {
     grid-template-columns: 282px;
-    grid-template-rows: 361px;
     width: 282px;
     margin: 36px auto 48px;
   }

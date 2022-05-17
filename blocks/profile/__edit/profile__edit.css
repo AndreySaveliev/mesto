@@ -2,12 +2,13 @@
   display: flex;
   flex-direction: row;
   width: max-content;
-  margin: 0 auto 0;
+  margin: auto 0;
   padding: 0;
 }
 
-@media screen and (max-width: 1279px) { 
+@media screen and (max-width: 1279px) {
   .profile__edit {
+    margin: 0 auto 0;
     padding-left: 27.25px;
   }
 }
