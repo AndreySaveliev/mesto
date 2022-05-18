@@ -2,8 +2,10 @@ let page = document.querySelector(".page");
 let popup = page.querySelector(".popup");
 let editButton = page.querySelector(".profile__edit");
 let closeButton = page.querySelector(".popup__close-button");
-let editName = page.querySelector(".popup__input_name");
-let editProfileDescription = page.querySelector(".popup__input_description");
+let editName = page.querySelector(".popup__input_textbox_name");
+let editProfileDescription = page.querySelector(
+  ".popup__input_textbox_description"
+);
 let profileName = page.querySelector(".profile__name");
 let profileDescription = page.querySelector(".profile__description");
 let submitButton = page.querySelector(".popup__submit-button");
