@@ -43,7 +43,7 @@ const deleteCard = (event) => {
 };
 
 // ОТКРЫТЕ ПОПАПА С КАРТИНКОЙ
-const popupCardSection = page.querySelector(".popup-card__section");
+const popupCardSection = page.querySelector(".popup-card-section");
 const popupCard = page.querySelector("#popup-card").content;
 const CardOpen = () => {
   const popupCardClone = popupCard.querySelector(".popup-card").cloneNode(true);
@@ -164,12 +164,12 @@ const renderPopupNewCard = () => {
 addCardButton.addEventListener("click", renderPopupNewCard);
 
 function popupCardOpen(event) {
-  const popup = page.querySelector(".popup-card__section");
+  const popup = page.querySelector(".popup-card-section");
   popup.classList.add("popup-card_opened");
 }
 
 function popupCardClose() {
-  const popupCardClone = page.querySelector(".popup-card__section");
+  const popupCardClone = page.querySelector(".popup-card-section");
   const popupCard = page.querySelector(".popup-card");
   popupCardClone.classList.remove("popup-card_opened");
   popupCard.remove();

@@ -1,4 +1,4 @@
-.popup-card__section {
+.popup-card-section {
   width: 100%;
   height: 100%;
   position: fixed;
@@ -12,7 +12,7 @@
   flex-direction: column;
   justify-content: center;
 }
-.popup-card__section::after {
+.popup-card-section::after {
   content: "";
   position: absolute;
   width: 100%;

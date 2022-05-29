@@ -28,9 +28,9 @@
 @import url(../blocks/profile/__name/profile__name.css);
 @import url(../blocks/profile/__pic/profile__pic.css);
 @import url(../blocks/grid/__delete/grid__delete.css);
-@import url(../blocks/popup-card/__section/popup-card__section.css);
-@import url(../blocks/popup-card/__title/popup-card__title.css);
-@import url(../blocks/popup-card/__image/popup-card__image.css);
-@import url(../blocks/popup-card/__close-button-card/popup-card__close-button-card.css);
+@import url(../blocks/popup-card-section/popup-card-section.css);
 @import url(../blocks/popup-card/popup-card.css);
+@import url(../blocks/popup-card/__close-button-card/popup-card__close-button-card.css);
 @import url(../blocks/popup-card/__description/popup-card__description.css);
+@import url(../blocks/popup-card/__image/popup-card__image.css);
+@import url(../blocks/popup-card/__title/popup-card__title.css);
