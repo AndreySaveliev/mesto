@@ -27,59 +27,40 @@
         <button type="button" class="profile__add-card"></button>
       </section>
       <section class="grid">
-        <div class="grid__cell">
-          <img class="grid__img" src="./images/disneyland.jpg" alt="фото">
-          <div class="grid__description">
-            <h2 class="grid__name">Диснейленд</h2>
-            <button type="button" class="grid__like"></button>
+        <template id="cell">
+          <div class="grid__cell">
+            <button class="grid__delete"></button>
+            <img class="grid__img" src="" alt="фото">
+            <div class="grid__description">
+              <h2 class="grid__name"></h2>
+              <button type="button" class="grid__like"></button>
+            </div>
           </div>
-        </div>
-        <div class="grid__cell">
-          <img class="grid__img" src="./images/dune.jpg" alt="фото">
-          <div class="grid__description">
-            <h2 class="grid__name">Дюны</h2>
-            <button type="button" class="grid__like"></button>
-          </div>
-        </div>
-        <div class="grid__cell">
-          <img class="grid__img" src="./images/newyork.jpg" alt="фото">
-          <div class="grid__description">
-            <h2 class="grid__name">Нью Йорк</h2>
-            <button type="button" class="grid__like"></button>
-          </div>
-        </div>
-        <div class="grid__cell">
-          <img class="grid__img" src="./images/pantheon.jpg" alt="фото">
-          <div class="grid__description">
-            <h2 class="grid__name">Пантенон</h2>
-            <button type="button" class="grid__like"></button>
-          </div>
-        </div>
-        <div class="grid__cell">
-          <img class="grid__img" src="./images/Singapore.jpg" alt="фото">
-          <div class="grid__description">
-            <h2 class="grid__name">Сингапур</h2>
-            <button type="button" class="grid__like"></button>
-          </div>
-        </div>
-        <div class="grid__cell">
-          <img class="grid__img" src="./images/Turkey.jpg" alt="фото">
-          <div class="grid__description">
-            <h2 class="grid__name">Турция</h2>
-            <button type="button" class="grid__like"></button>
-          </div>
-        </div>
+        </template>
       </section>
       <section class="popup">
-        <div class="popup__container">
-          <h3 class="popup__title">Редактировать профиль</h3>
-          <button type="button" aria-label="close" class="popup__close-button"></button>
-          <form name="popup__form" class="popup__form">
-            <input type="text" name="name" class="popup__input popup__input_textbox_name" value="">
-            <input type="text" name="description" class="popup__input popup__input_textbox_description" value="">
-            <button type="submit" class="popup__submit-button">Сохранить</button>
-          </form>
-        </div>
+        <template id="popup">
+          <div class="popup__container">
+            <h3 class="popup__title" value=""></h3>
+            <button type="button" aria-label="close" class="popup__close-button"></button>
+            <form name="popup__form" class="popup__form">
+              <input type="text" name="name" class="popup__input popup__input_textbox_name" value="">
+              <input type="text" name="description" class="popup__input popup__input_textbox_description" value="">
+              <button type="submit" class="popup__submit-button"></button>
+            </form>
+          </div>
+        </template>
+      </section>
+      <section class="popup-card__section">
+        <template id="popup-card">
+          <div class="popup-card">
+            <div class="popup-card__description">
+              <img class="popup-card__image">
+              <h2 class="popup-card__title"></h2>
+            </div>
+            <button type="button" aria-label="close" class="popup-card__close-button-card"></button>
+          </div>
+        </template>
       </section>
     </main>
     <footer class="footer">
