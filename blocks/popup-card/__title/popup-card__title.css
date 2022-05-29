@@ -1,5 +1,5 @@
 .popup-card__title {
-  width: min-content;
+  width: max-content;
   font-family: "Inter";
   font-weight: 400;
   font-size: 12px;
