@@ -10,6 +10,7 @@
   border: 0;
   transition: 0.2s;
   z-index: 2;
+  cursor: pointer;
 }
 .grid__delete:hover {
   opacity: 0.6;

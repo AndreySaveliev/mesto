@@ -1,16 +1,17 @@
 .popup-card__close-button-card {
-  width: 32px;
-  height: 32px;
+  min-width: 32px;
+  max-height: 32px;
   background-color: transparent;
   background-image: url(../../../images/close-button.svg);
   border: 0;
   background-size: contain;
   margin: 0 0 0 8px;
+  cursor: pointer;
 }
 @media screen and (max-width: 1023px) {
   .popup-card__close-button-card {
-    width: 20px;
-    height: 20px;
+    min-width: 20px;
+    max-height: 20px;
     margin: -36px 0 0 -20px;
   }
 }
