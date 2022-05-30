@@ -1,11 +1,26 @@
 .popup-card {
-  z-index: 1;
-  margin: 0 auto;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
   display: flex;
-  flex-direction: row;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.2s;
+  flex-direction: column;
+  justify-content: center;
 }
-@media screen and (max-width: 1276px) {
-  .popup-card {
-    height: min-content;
-  }
+.popup-card::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  opacity: 0.5;
+}
+.popup_opened {
+  visibility: visible;
+  opacity: 1;
 }

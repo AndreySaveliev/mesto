@@ -41,28 +41,28 @@
       <section class="popup popup-profile-edit">
         <div class="popup__container">
           <h3 class="popup__title" value="">Редактировать профиль</h3>
-          <button type="button" aria-label="close" class="popup__close-button_edit-profile"></button>
+          <button type="button" aria-label="close" class="popup__close-button popup__close-button_edit-profile"></button>
           <form name="popup__form" id="popup__profile-edit" class="popup__form">
             <input type="text" name="name" class="popup__input popup__input_textbox_name" value="" placeholder="Имя">
             <input type="text" name="description" class="popup__input popup__input_textbox_description" value="" placeholder="Описание профиля">
-            <button type="submit" class="popup__submit-button_edit-profile">Сохранить</button>
+            <button type="submit" class="popup__submit-button popup__submit-button_edit-profile">Сохранить</button>
           </form>
         </div>
       </section>
       <section class="popup popup-card-add">
         <div class="popup__container">
           <h3 class="popup__title" value="">Новое место</h3>
-          <button type="button" aria-label="close" class="popup__close-button_add-card"></button>
+          <button type="button" aria-label="close" class="popup__close-button popup__close-button_add-card"></button>
           <form name="popup__form-card" id="popup__form-card" class="popup__form">
             <input type="text" name="name" class="popup__input popup__input_card_name" value="" placeholder="Назвение">
             <input type="text" name="link" class="popup__input popup__input_card_link" value="" placeholder="Ссылка на картинку">
-            <button type="submit" class="popup__submit-button_new-card">Создать</button>
+            <button type="submit" class="popup__submit-button popup__submit-button_new-card">Создать</button>
           </form>
         </div>
       </section>
-      <section class="popup-card-section">
+      <section class="popup-card popup-card-section">
         <template id="popup-card">
-          <div class="popup-card">
+          <div class="popup-card__block">
             <div class="popup-card__description">
               <img class="popup-card__image">
               <h2 class="popup-card__title"></h2>

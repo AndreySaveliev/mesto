@@ -1,13 +1,9 @@
 .popup-card__title {
-  width: max-content;
+  font-size: 12px;
   font-family: "Inter";
   font-weight: 400;
-  font-size: 12px;
   line-height: 15px;
+  z-index: 1;
+  width: max-content;
   color: #fff;
-}
-.popup-card_opened {
-  visibility: visible;
-  opacity: 1;
-  display: flex;
 }

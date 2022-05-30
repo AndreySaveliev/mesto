@@ -75,7 +75,7 @@ const popupOpen = (popup) => {
 };
 const popupClose = (popup) => {
   if (popup === page.querySelector(".popup-card-section")) {
-    page.querySelector(".popup-card").remove();
+    page.querySelector(".popup-card__block").remove();
   }
   popup.classList.remove("popup_opened");
 };
@@ -139,14 +139,10 @@ const cardDelete = (event) => {
 initialCards.forEach((card) => {
   const newCard = createCard(card);
   renderCard(newCard, grid);
-  // const card = cell.querySelector(".grid__cell").cloneNode(true);
-  // card.querySelector(".grid__img").src = pic.link;
-  // card.querySelector(".grid__name").textContent = pic.name;
-  // grid.prepend(card);
 });
 // ОТКРЫТЕ КАРТОЧКИ
 const cardOpen = () => {
-  const card = popupCard.querySelector(".popup-card").cloneNode(true);
+  const card = popupCard.querySelector(".popup-card__block").cloneNode(true);
   card.querySelector(".popup-card__image").src = event.target.src;
   card.querySelector(".popup-card__title").textContent =
     event.target.nextElementSibling.textContent;
