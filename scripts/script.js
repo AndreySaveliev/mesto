@@ -30,7 +30,7 @@ const cardBlock = page.querySelector(".popup-card__block");
 const profileBlock = page.querySelector(".popup-profile-block");
 const popupCardBlock = page.querySelector(".popup-card-add-block");
 const submitButtons = page.querySelectorAll(".popup__submit-button");
-const errors = page.querySelectorAll(".popup__form_input_error");
+const errors = page.querySelectorAll(".popup__form-input-error");
 
 // ЗАНАЧЕНИЯ ПОПАПА РЕД. ПРОФИЛЯ
 const setValuesToProfileForm = () => {
@@ -184,13 +184,13 @@ const showInputError = (formElement, inputElement, errorMessage) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.add("popup__input_show_error");
   errorElement.textContent = errorMessage;
-  errorElement.classList.add("popup__form_input_error-active");
+  errorElement.classList.add("popup__form-input-error-active");
 };
 
 const hideInputError = (formElement, inputElement) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
   inputElement.classList.remove("popup__input_show_error");
-  errorElement.classList.remove("popup__form_input_error-active");
+  errorElement.classList.remove("popup__form-input-error-active");
   errorElement.textContent = "";
 };
 
