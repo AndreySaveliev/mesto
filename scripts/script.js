@@ -49,16 +49,6 @@ const openPopup = (popup) => {
 
 const closePopup = (popup) => {
   popup.classList.remove("popup_opened");
-  errors.forEach((error) => {
-    error.textContent = "";
-  });
-  inputs.forEach((input) => {
-    input.classList.remove("popup__input_show_error");
-  });
-  submitButtons.forEach((button) => {
-    button.removeAttribute("disable", true);
-    button.classList.remove("popup__submit-button-disable");
-  });
 };
 
 profileEditButton.addEventListener("click", () => {
@@ -74,37 +64,31 @@ profileEditClose.addEventListener("click", () => closePopup(profileEdit));
 addCardCloseButton.addEventListener("click", () => closePopup(popupCardAdd));
 closeCardButton.addEventListener("click", () => closePopup(popupShowCard));
 // ЗАКРЫТИЕ ПО НАЖАТИЮ НА ОВЕРЛЕЙ
-popupShowCard.addEventListener("mousedown", function (e) {
-  if (e.offsetX > cardBlock.offsetWidth || e.offsetY > cardBlock.offsetHeight) {
+profileEdit.addEventListener("mousedown", (event) => {
+  const target = findClosestPopup(event);
+  if (target.classList.contains("popup")) {
+    closePopup(target);
+  }
+});
+
+popupCardAdd.addEventListener("mousedown", (event) => {
+  const target = findClosestPopup(event);
+  if (target.classList.contains("popup")) {
+    closePopup(popupCardAdd);
+  }
+});
+
+popupShowCard.addEventListener("mousedown", (event) => {
+  const target = findClosestPopup(event);
+  if (target.classList.contains("popup")) {
     closePopup(popupShowCard);
   }
 });
 
-profileEdit.addEventListener("mousedown", function (e) {
-  if (
-    e.offsetX > profileBlock.offsetWidth ||
-    e.offsetY > profileBlock.offsetHeight
-  ) {
-    closePopup(profileEdit);
-  }
-});
+const findClosestPopup = (event) => {
+  return event.target;
+};
 
-popupCardAdd.addEventListener("mousedown", function (e) {
-  if (
-    e.offsetX > popupCardBlock.offsetWidth ||
-    e.offsetY > popupCardBlock.offsetHeight
-  ) {
-    closePopup(popupCardAdd);
-  }
-});
-//ЗАКРЫТЕ ПОПАП ПО ESC
-document.addEventListener("keydown", (evt) => {
-  if (evt.keyCode == 27) {
-    closePopup(popupShowCard);
-    closePopup(profileEdit);
-    closePopup(popupCardAdd);
-  }
-});
 // ЗНАЧЕНИЕ ИМЕНИ И ОПИСАНИЯ ПРОФИЛЯ В ПОПАПЕ
 page
   .querySelector("#popup__profile-edit")
@@ -169,65 +153,4 @@ const openCard = (event) => {
     event.target.nextElementSibling.textContent.trim();
   popupShowCard.querySelector(".popup-card__title").textContent =
     event.target.nextElementSibling.textContent;
-};
-
-// ВАЛИДАЦИЯ ФОРМЫ ПРОФИЛЯ
-const isValid = (formElement, inputElement) => {
-  if (!inputElement.validity.valid) {
-    showInputError(formElement, inputElement, inputElement.validationMessage);
-  } else {
-    hideInputError(formElement, inputElement);
-  }
-};
-
-const showInputError = (formElement, inputElement, errorMessage) => {
-  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.add("popup__input_show_error");
-  errorElement.textContent = errorMessage;
-  errorElement.classList.add("popup__form-input-error-active");
-};
-
-const hideInputError = (formElement, inputElement) => {
-  const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.remove("popup__input_show_error");
-  errorElement.classList.remove("popup__form-input-error-active");
-  errorElement.textContent = "";
-};
-
-const formEventListener = (formElement) => {
-  const inputList = Array.from(formElement.querySelectorAll(".popup__input"));
-  const buttonElement = formElement.querySelector(".popup__submit-button");
-  inputList.forEach((inputElement) => {
-    inputElement.addEventListener("input", () => {
-      isValid(formElement, inputElement);
-      toggleButtonState(inputList, buttonElement);
-    });
-  });
-};
-
-const enableValidation = () => {
-  popupForms.forEach((formElement) => {
-    formElement.addEventListener("submit", (evt) => {
-      evt.preventDefault();
-    });
-    formEventListener(formElement);
-  });
-};
-
-enableValidation();
-// ИЗМИНЕНИЕ КНОПКИ ЕСЛИ ПОЛЯ НЕ ПРОШЛИ ВАЛИДАЦИЮ
-const hasInvalidInput = (inputList) => {
-  return inputList.some((inputElement) => {
-    return !inputElement.validity.valid;
-  });
-};
-
-const toggleButtonState = (inputList, buttonElement) => {
-  if (hasInvalidInput(inputList)) {
-    buttonElement.setAttribute("disabled", true);
-    buttonElement.classList.add("popup__submit-button-disable");
-  } else {
-    buttonElement.removeAttribute("disabled ", true);
-    buttonElement.classList.remove("popup__submit-button-disable");
-  }
 };
