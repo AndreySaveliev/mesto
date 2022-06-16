@@ -37,3 +37,12 @@
 @import url(../blocks/profile/__name/profile__name.css);
 @import url(../blocks/profile/__pic/profile__pic.css);
 @import url(../blocks/grid/__delete/grid__delete.css);
+
+@import url(../blocks/popup/__input/popup__input_show_error.css);
+@import url(../blocks/form/__input/form__input-error.css);
+@import url(../blocks/form/__input/form__input-error-active.css);
+@import url(../blocks/popup/__submit-button/popup__submit-button-disable.css);
+@import url(../blocks/name-input__container.css);
+@import url(../blocks/desctiption-input__container.css);
+@import url(../blocks/card-link__container.css);
+@import url(../blocks/card-name__container.css);
