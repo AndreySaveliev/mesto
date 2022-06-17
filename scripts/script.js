@@ -45,10 +45,13 @@ const clearValuesToNewCardForm = () => {
 // ОТКРЫТИЕ ПОПАПА И ЗАКРЫТИЕ
 const openPopup = (popup) => {
   popup.classList.add("popup_opened");
+  closeWithEsc(popup);
 };
 
 const closePopup = (popup) => {
   popup.classList.remove("popup_opened");
+  clearInputsErrors();
+  clearInputsStyles();
 };
 
 profileEditButton.addEventListener("click", () => {
@@ -65,30 +68,30 @@ addCardCloseButton.addEventListener("click", () => closePopup(popupCardAdd));
 closeCardButton.addEventListener("click", () => closePopup(popupShowCard));
 // ЗАКРЫТИЕ ПО НАЖАТИЮ НА ОВЕРЛЕЙ
 profileEdit.addEventListener("mousedown", (event) => {
-  const target = findClosestPopup(event);
-  if (target.classList.contains("popup")) {
-    closePopup(target);
+  if (event.target.classList.contains("popup")) {
+    closePopup(profileEdit);
   }
 });
-
 popupCardAdd.addEventListener("mousedown", (event) => {
-  const target = findClosestPopup(event);
-  if (target.classList.contains("popup")) {
+  if (event.target.classList.contains("popup")) {
     closePopup(popupCardAdd);
   }
 });
-
 popupShowCard.addEventListener("mousedown", (event) => {
-  const target = findClosestPopup(event);
-  if (target.classList.contains("popup")) {
+  if (event.target.classList.contains("popup")) {
     closePopup(popupShowCard);
   }
 });
-
-const findClosestPopup = (event) => {
-  return event.target;
+// ЗАКРЫТИЕ НА ESC
+const closeWithEsc = (popup) => {
+  console.log("add");
+  document.addEventListener("keydown", function closeByEsc(event) {
+    if (event.keyCode === 27) {
+      closePopup(popup);
+      document.removeEventListener("keydown", closeWithEsc);
+    }
+  });
 };
-
 // ЗНАЧЕНИЕ ИМЕНИ И ОПИСАНИЯ ПРОФИЛЯ В ПОПАПЕ
 page
   .querySelector("#popup__profile-edit")
@@ -153,4 +156,17 @@ const openCard = (event) => {
     event.target.nextElementSibling.textContent.trim();
   popupShowCard.querySelector(".popup-card__title").textContent =
     event.target.nextElementSibling.textContent;
+};
+// ОЧИСКТКА ОШИБОК
+const clearInputsErrors = () => {
+  errors.forEach((error) => {
+    error.textContent = "";
+  });
+};
+const clearInputsStyles = () => {
+  inputs.forEach((input) => {
+    if (input.classList.contains("popup__input_show_error")) {
+      input.classList.remove("popup__input_show_error");
+    }
+  });
 };

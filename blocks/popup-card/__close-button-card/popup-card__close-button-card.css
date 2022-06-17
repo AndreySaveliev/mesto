@@ -8,6 +8,9 @@
   cursor: pointer;
   transition: 0.2s;
   margin: -40px 0 0 8px;
+  position: relative;
+  top: 0;
+  right: 0;
 }
 .popup-card__close-button-card:hover {
   opacity: 0.6;

@@ -1,3 +1,6 @@
+// УФФФ... НАДЕЮСЬ С 3 РАЗА Я СМОГ ИСПАРВИТЬ ВСЕ, ЧТОБЫ РАБОТА
+// ХОТЯ НЕ ОТКЛОНЯЛАСЬ ОТ ПРОВЕРКИ)))
+
 // ВАЛИДАЦИЯ ФОРМЫ ПРОФИЛЯ
 const isValid = (formElement, inputElement) => {
   if (!inputElement.validity.valid) {
@@ -21,10 +24,28 @@ const hideInputError = (formElement, inputElement) => {
   errorElement.textContent = "";
 };
 
+const hasInvalidInput = (inputList) => {
+  return inputList.some((inputElement) => {
+    return !inputElement.validity.valid;
+  });
+};
+// ИЗМИНЕНИЕ КНОПКИ ЕСЛИ ПОЛЯ НЕ ПРОШЛИ ВАЛИДАЦИЮ
+const toggleButtonState = (inputList, buttonElement) => {
+  if (hasInvalidInput(inputList)) {
+    buttonElement.setAttribute("disabled", true);
+    buttonElement.classList.add("popup__submit-button-disable");
+  } else {
+    buttonElement.removeAttribute("disabled");
+    buttonElement.classList.remove("popup__submit-button-disable");
+  }
+};
 const formEventListener = (formElement) => {
   const inputList = Array.from(formElement.querySelectorAll(".popup__input"));
   const buttonElement = formElement.querySelector(".popup__submit-button");
   inputList.forEach((inputElement) => {
+    if (inputElement.value == "") {
+      toggleButtonState(inputList, buttonElement);
+    }
     inputElement.addEventListener("input", () => {
       isValid(formElement, inputElement);
       toggleButtonState(inputList, buttonElement);
@@ -41,20 +62,8 @@ const enableValidation = () => {
   });
 };
 
-enableValidation();
-// ИЗМИНЕНИЕ КНОПКИ ЕСЛИ ПОЛЯ НЕ ПРОШЛИ ВАЛИДАЦИЮ
-const hasInvalidInput = (inputList) => {
-  return inputList.some((inputElement) => {
-    return !inputElement.validity.valid;
-  });
-};
-
-const toggleButtonState = (inputList, buttonElement) => {
-  if (hasInvalidInput(inputList)) {
-    buttonElement.setAttribute("disabled", true);
-    buttonElement.classList.add("popup__submit-button-disable");
-  } else {
-    buttonElement.removeAttribute("disabled");
-    buttonElement.classList.remove("popup__submit-button-disable");
-  }
-};
+enableValidation({
+  formElement: ".popup__form",
+  inputElement: ".popup__input",
+  buttonElement: ".popup__submit-button",
+});
