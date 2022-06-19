@@ -4,23 +4,28 @@
 // ВАЛИДАЦИЯ ФОРМЫ ПРОФИЛЯ
 const isValid = (formElement, inputElement) => {
   if (!inputElement.validity.valid) {
-    showInputError(formElement, inputElement, inputElement.validationMessage);
+    showInputError(
+      formElement,
+      inputElement,
+      inputElement.validationMessage,
+      settings
+    );
   } else {
-    hideInputError(formElement, inputElement);
+    hideInputError(formElement, inputElement, settings);
   }
 };
 
-const showInputError = (formElement, inputElement, errorMessage) => {
+const showInputError = (formElement, inputElement, errorMessage, settings) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.add("popup__input_show_error");
+  inputElement.classList.add(settings.inputErrorClass);
   errorElement.textContent = errorMessage;
-  errorElement.classList.add("popup__form-input-error-active");
+  errorElement.classList.add(settings.errorClass);
 };
 
-const hideInputError = (formElement, inputElement) => {
+const hideInputError = (formElement, inputElement, settings) => {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  inputElement.classList.remove("popup__input_show_error");
-  errorElement.classList.remove("popup__form-input-error-active");
+  inputElement.classList.remove(settings.inputErrorClass);
+  errorElement.classList.remove(settings.errorClass);
   errorElement.textContent = "";
 };
 
@@ -30,25 +35,27 @@ const hasInvalidInput = (inputList) => {
   });
 };
 // ИЗМИНЕНИЕ КНОПКИ ЕСЛИ ПОЛЯ НЕ ПРОШЛИ ВАЛИДАЦИЮ
-const toggleButtonState = (inputList, buttonElement) => {
+const toggleButtonState = (inputList, buttonElement, settings) => {
   if (hasInvalidInput(inputList)) {
     buttonElement.setAttribute("disabled", true);
-    buttonElement.classList.add("popup__submit-button-disable");
+    buttonElement.classList.add(settings.inactiveButtonClass);
   } else {
     buttonElement.removeAttribute("disabled");
-    buttonElement.classList.remove("popup__submit-button-disable");
+    buttonElement.classList.remove(settings.inactiveButtonClass);
   }
 };
-const formEventListener = (formElement) => {
-  const inputList = Array.from(formElement.querySelectorAll(".popup__input"));
-  const buttonElement = formElement.querySelector(".popup__submit-button");
+const setEventListeners = (formElement, settings) => {
+  const inputList = Array.from(
+    formElement.querySelectorAll(settings.inputElement)
+  );
+  const buttonElement = formElement.querySelector(settings.buttonElement);
   inputList.forEach((inputElement) => {
     if (inputElement.value == "") {
-      toggleButtonState(inputList, buttonElement);
+      toggleButtonState(inputList, buttonElement, settings);
     }
     inputElement.addEventListener("input", () => {
       isValid(formElement, inputElement);
-      toggleButtonState(inputList, buttonElement);
+      toggleButtonState(inputList, buttonElement, settings);
     });
   });
 };
@@ -58,12 +65,17 @@ const enableValidation = () => {
     formElement.addEventListener("submit", (evt) => {
       evt.preventDefault();
     });
-    formEventListener(formElement);
+    setEventListeners(formElement, settings);
   });
 };
 
-enableValidation({
+const settings = {
   formElement: ".popup__form",
   inputElement: ".popup__input",
   buttonElement: ".popup__submit-button",
-});
+  inactiveButtonClass: "popup__submit-button-disable",
+  inputErrorClass: "popup__input_show_error",
+  errorClass: "popup__form-input-error-active",
+};
+
+enableValidation(settings);
