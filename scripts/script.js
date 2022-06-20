@@ -25,7 +25,6 @@ const nameNewCardInput = page.querySelector(".popup__input_card_name");
 const closeCardButton = page.querySelector(".popup-card__close-button-card");
 const popupProfileEditForm = page.querySelector("#popup__profile-edit");
 const inputs = page.querySelectorAll(".popup__input");
-const popupForms = page.querySelectorAll(".popup__form");
 const cardBlock = page.querySelector(".popup-card__block");
 const profileBlock = page.querySelector(".popup-profile-block");
 const popupCardBlock = page.querySelector(".popup-card-add-block");
@@ -34,14 +33,17 @@ const errors = page.querySelectorAll(".popup__form-input-error");
 const popupCardImg = page.querySelector(".popup-card__image");
 const popupCardTitle = page.querySelector(".popup-card__title");
 const popups = page.querySelectorAll(".popup");
-
+const cardForm = page.querySelector("#popup__form-card");
+const popupFormCardSubmitButton = page.querySelector(
+  ".popup__submit-button_new-card"
+);
 // ЗАНАЧЕНИЯ ПОПАПА РЕД. ПРОФИЛЯ
 const setValuesToProfileForm = () => {
   editName.value = profileName.textContent;
   editProfileDescription.value = profileDescription.textContent;
 };
 const clearValuesToNewCardForm = () => {
-  page.querySelector(`#popup__form-card`).reset();
+  cardForm.reset();
 };
 
 // ОТКРЫТИЕ ПОПАПА И ЗАКРЫТИЕ
@@ -65,6 +67,7 @@ addCardButton.addEventListener("click", () => {
   clearValuesToNewCardForm();
   clearInputsErrors();
   clearInputsStyles();
+  disableButton();
   openPopup(popupCardAdd);
 });
 // ЗАКРЫТИЕ ПО НАЖАТИЮ НА ОВЕРЛЕЙ И КРЕСТИК
@@ -117,9 +120,6 @@ const renderCard = (card, grid) => {
 };
 
 page.querySelector("#popup__form-card").addEventListener("submit", (event) => {
-  const popupFormCardSubmitButton = page.querySelector(
-    ".popup__submit-button_new-card"
-  );
   event.preventDefault();
   const card = {
     name: event.target.elements["name"].value,
@@ -128,8 +128,6 @@ page.querySelector("#popup__form-card").addEventListener("submit", (event) => {
   const newCard = createCard(card);
   closePopup(popupCardAdd);
   renderCard(newCard, grid);
-  popupFormCardSubmitButton.classList.add("popup__submit-button-disable");
-  popupFormCardSubmitButton.setAttribute("disabled", true);
 });
 
 // ЛАЙКИ
@@ -165,4 +163,9 @@ const clearInputsStyles = () => {
       input.classList.remove("popup__input_show_error");
     }
   });
+};
+//ДЕАКТИВАЦИЯ КНОПКИ
+const disableButton = () => {
+  popupFormCardSubmitButton.classList.add("popup__submit-button-disable");
+  popupFormCardSubmitButton.setAttribute("disabled", true);
 };

@@ -1,6 +1,3 @@
-// УФФФ... НАДЕЮСЬ С 3 РАЗА Я СМОГ ИСПАРВИТЬ ВСЕ, ЧТОБЫ РАБОТА
-// ХОТЯ НЕ ОТКЛОНЯЛАСЬ ОТ ПРОВЕРКИ)))
-
 // ВАЛИДАЦИЯ ФОРМЫ ПРОФИЛЯ
 const isValid = (formElement, inputElement) => {
   if (!inputElement.validity.valid) {
@@ -60,7 +57,8 @@ const setEventListeners = (formElement, settings) => {
   });
 };
 
-const enableValidation = () => {
+const enableValidation = (settings) => {
+  const popupForms = page.querySelectorAll(settings.formElement);
   popupForms.forEach((formElement) => {
     formElement.addEventListener("submit", (evt) => {
       evt.preventDefault();
