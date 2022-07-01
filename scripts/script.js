@@ -1,11 +1,16 @@
+import { FormValidator } from './FormValidator.js';
+import { Card } from './card.js';
+import { initialCards } from './initialCards.js';
+const settings = {
+  formElement: ".popup__form",
+  inputElement: ".popup__input",
+  buttonElement: ".popup__submit-button",
+  inactiveButtonClass: "popup__submit-button-disable",
+  inputErrorClass: "popup__input_show_error",
+  errorClass: "popup__form-input-error-active",
+};
 const page = document.querySelector(".page");
 const profileEditButton = page.querySelector(".profile__edit-button");
-const profileEditClose = page.querySelector(
-  ".popup__close-button_edit-profile"
-);
-const profileEditSubmitButton = page.querySelector(
-  ".popup__submit-button_edit-profile"
-);
 const editName = page.querySelector(".popup__input_textbox_name");
 const editProfileDescription = page.querySelector(
   ".popup__input_textbox_description"
@@ -13,31 +18,45 @@ const editProfileDescription = page.querySelector(
 const profileName = page.querySelector(".profile__name");
 const profileDescription = page.querySelector(".profile__description");
 const addCardButton = page.querySelector(".profile__add-card");
-const addCardCloseButton = page.querySelector(".popup__close-button_add-card");
 const popupCardAdd = page.querySelector(".popup-card-add");
-const addNewCardButton = page.querySelector(".popup__submit-button_new-card");
-const popupShowCard = page.querySelector(".popup-card-section");
 const grid = page.querySelector(".grid");
-const cell = page.querySelector("#cell").content;
 const profileEdit = page.querySelector(".popup-profile-edit");
-const linkNewCardInput = page.querySelector(".popup__input_card_link");
-const nameNewCardInput = page.querySelector(".popup__input_card_name");
-const closeCardButton = page.querySelector(".popup-card__close-button-card");
-const popupProfileEditForm = page.querySelector("#popup__profile-edit");
 const inputs = page.querySelectorAll(".popup__input");
-const cardBlock = page.querySelector(".popup-card__block");
-const profileBlock = page.querySelector(".popup-profile-block");
-const popupCardBlock = page.querySelector(".popup-card-add-block");
-const submitButtons = page.querySelectorAll(".popup__submit-button");
 const errors = page.querySelectorAll(".popup__form-input-error");
-const popupCardImg = page.querySelector(".popup-card__image");
-const popupCardTitle = page.querySelector(".popup-card__title");
 const popups = page.querySelectorAll(".popup");
 const cardForm = page.querySelector("#popup__form-card");
 const popupFormCardSubmitButton = page.querySelector(
   ".popup__submit-button_new-card"
 );
-// ЗАНАЧЕНИЯ ПОПАПА РЕД. ПРОФИЛЯ
+const popupForms = page.querySelectorAll(settings.formElement);
+
+// const popupCardImg = page.querySelector(".popup-card__image");
+// const popupCardTitle = page.querySelector(".popup-card__title");
+// const cardBlock = page.querySelector(".popup-card__block");
+// const profileBlock = page.querySelector(".popup-profile-block");
+// const popupCardBlock = page.querySelector(".popup-card-add-block");
+// const submitButtons = page.querySelectorAll(".popup__submit-button");
+// const linkNewCardInput = page.querySelector(".popup__input_card_link");
+// const nameNewCardInput = page.querySelector(".popup__input_card_name");
+// const closeCardButton = page.querySelector(".popup-card__close-button-card");
+// const popupProfileEditForm = page.querySelector("#popup__profile-edit");
+// const cell = page.querySelector("#cell").content;
+// const addNewCardButton = page.querySelector(".popup__submit-button_new-card");
+// const popupShowCard = page.querySelector(".popup-card-section");
+// const addCardCloseButton = page.querySelector(".popup__close-button_add-card");
+// const profileEditClose = page.querySelector(
+//   ".popup__close-button_edit-profile"
+// );
+// const profileEditSubmitButton = page.querySelector(
+//   ".popup__submit-button_edit-profile"
+// );
+
+//ВЛЮЧЕНИЕ ВАЛИДАЦИИ
+popupForms.forEach((formElement) => {
+  new FormValidator(formElement).enableValidation(settings)
+})
+
+// ЗНАЧЕНИЯ ПОПАПА РЕД. ПРОФИЛЯ
 const setValuesToProfileForm = () => {
   editName.value = profileName.textContent;
   editProfileDescription.value = profileDescription.textContent;
@@ -47,7 +66,7 @@ const clearValuesToNewCardForm = () => {
 };
 
 // ОТКРЫТИЕ ПОПАПА И ЗАКРЫТИЕ
-const openPopup = (popup) => {
+export const openPopup = (popup) => {
   popup.classList.add("popup_opened");
   document.addEventListener("keydown", closeByEscape);
 };
@@ -98,59 +117,26 @@ page
     profileDescription.textContent = editProfileDescription.value;
     closePopup(profileEdit);
   });
-
-// СОЗДАНИЕ КАРТОЧКИ
-const createCard = (card) => {
-  const newCard = cell.querySelector(".grid__cell").cloneNode(true);
-  const newCardImg = newCard.querySelector(".grid__img");
-  newCardImg.src = card.link;
-  newCardImg.alt = card.name;
-  newCard.querySelector(".grid__name").textContent = card.name;
-  newCardImg.addEventListener("click", (event) => {
-    openCard(card);
-    openPopup(popupShowCard);
-  });
-  newCard.querySelector(".grid__like").addEventListener("click", likeCard);
-  newCard.querySelector(".grid__delete").addEventListener("click", deleteCard);
-  return newCard;
-};
-
-const renderCard = (card, grid) => {
-  grid.prepend(card);
-};
-
+//СОЗДАНИЕ НОВОЙ КАРТОЧКИ ПО САБМИТУ ФОРМЫ
 page.querySelector("#popup__form-card").addEventListener("submit", (event) => {
   event.preventDefault();
   const card = {
     name: event.target.elements["name"].value,
     link: event.target.elements["link"].value,
   };
-  const newCard = createCard(card);
+  const newCard = new Card(card);
+  const cardEl = newCard.generateCard()
   closePopup(popupCardAdd);
-  renderCard(newCard, grid);
+  grid.prepend(cardEl)
 });
 
-// ЛАЙКИ
-const likeCard = (event) => {
-  event.target.classList.toggle("grid__like_active");
-};
-
-// УДАЛЕНИЕ КАРТОЧКИ
-const deleteCard = (event) => {
-  event.target.closest(".grid__cell").remove();
-};
-
-// СТАНДАРТНЫЕ КАРТОЧКИ
-initialCards.forEach((card) => {
-  const newCard = createCard(card);
-  renderCard(newCard, grid);
+// СТАНДАРТНЫЕ КАРТОЧКИ 
+initialCards.forEach((item) => {
+  const newCard = new Card(item);
+  const cardEl = newCard.generateCard()
+  grid.append(cardEl)
 });
-// ОТКРЫТЕ КАРТОЧКИ
-const openCard = (card) => {
-  popupCardImg.src = card.link;
-  popupCardTitle.textContent = card.name;
-  popupCardImg.alt = card.name;
-};
+
 // ОЧИСКТКА ОШИБОК
 const clearInputsErrors = () => {
   errors.forEach((error) => {
