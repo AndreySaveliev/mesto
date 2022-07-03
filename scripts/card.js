@@ -1,9 +1,5 @@
-const page = document.querySelector(".page");
-const cell = page.querySelector("#cell").content;
-const popupCardImg = page.querySelector(".popup-card__image");
-const popupCardTitle = page.querySelector(".popup-card__title");
-const popupShowCard = page.querySelector(".popup-card-section");
-import { openPopup } from "./script.js";
+import { cell, popupShowCard, popupCardTitle, popupCardImg,  } from "./constants.js";
+import { openPopup } from "./functions.js";
 
 export class Card {
   constructor(card) {
@@ -17,8 +13,9 @@ export class Card {
 
   generateCard() {
     this._element = this._getTemplate()
-    this._element.querySelector('.grid__img').src = this._link;
-    this._element.querySelector('.grid__img').alt = this._name;
+    this._img = this._element.querySelector('.grid__img')
+    this._img.src = this._link;
+    this._img.alt = this._name;
     this._element.querySelector(".grid__name").textContent = this._name;
     this._setOpenListener()
     this._element.querySelector('.grid__delete').addEventListener("click", () => {
@@ -33,15 +30,16 @@ export class Card {
     popupCardImg.src = this._link;
     popupCardTitle.textContent = this._name;
     popupCardImg.alt = this._name;
+    openPopup(popupShowCard)
   }
   _setOpenListener() {
-    this._element.querySelector('.grid__img').addEventListener('click', () => {
+     this._img.addEventListener('click', () => {
       this._openCard()
-      openPopup(popupShowCard)
     })
   }
   _deleteCard() {
-    this._element.closest('.grid__cell').remove()
+    this._element.remove()
+    this._element = null
   };  
   _likeCard() {
     event.target.classList.toggle('grid__like_active')

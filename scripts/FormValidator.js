@@ -1,19 +1,8 @@
-const page = document.querySelector(".page");
-const settings = {
-  formElement: ".popup__form",
-  inputElement: ".popup__input",
-  buttonElement: ".popup__submit-button",
-  inactiveButtonClass: "popup__submit-button-disable",
-  inputErrorClass: "popup__input_show_error",
-  errorClass: "popup__form-input-error-active",
-};
-const popupForms = page.querySelectorAll(settings.formElement);
+import {settings, popupFormCardSubmitButton, errors, inputs} from "./constants.js";
 
 export class FormValidator {
-  constructor(settings, formElement) {
+  constructor(formElement) {
     this._formElement = formElement;
-    // this._inpitElement = inputElement;
-    // this._buttonElement = buttonElement;
   }
   _isValid(formElement, inputElement) {
     if (!inputElement.validity.valid) {
@@ -53,27 +42,42 @@ export class FormValidator {
       buttonElement.classList.remove(settings.inactiveButtonClass);
     }
   }
-    _setEventListeners(formElement, settings) {
-      const inputList = Array.from(
-        formElement.querySelectorAll(settings.inputElement)
-      );
-      const buttonElement = formElement.querySelector(settings.buttonElement);
-      inputList.forEach((inputElement) => {
-        if (inputElement.value == "") {
-          this._toggleButtonState(inputList, buttonElement, settings);
-        }
-        inputElement.addEventListener("input", () => {
-          this._isValid(formElement, inputElement);
-          this._toggleButtonState(inputList, buttonElement, settings);
-        });
+  _setEventListeners(formElement, settings) {
+    const inputList = Array.from(
+      formElement.querySelectorAll(settings.inputElement)
+    );
+    const buttonElement = formElement.querySelector(settings.buttonElement);
+    inputList.forEach((inputElement) => {
+      if (inputElement.value == "") {
+        this._toggleButtonState(inputList, buttonElement, settings);
+      }
+      inputElement.addEventListener("input", () => {
+        this._isValid(formElement, inputElement);
+        this._toggleButtonState(inputList, buttonElement, settings);
       });
-    }
-    enableValidation(settings) {
-      popupForms.forEach((formElement) => {
-      formElement.addEventListener("submit", (evt) => {
-        evt.preventDefault();
-      });
-      this._setEventListeners(formElement, settings);
-      });
-    };
+    });
+  }
+  _clearInputsErrors = () => {
+    errors.forEach((error) => {
+      error.textContent = "";
+    });
+  };
+  _clearInputsStyles = () => {
+    inputs.forEach((input) => {
+      if (input.classList.contains("popup__input_show_error")) {
+        input.classList.remove("popup__input_show_error");
+      }
+    });
+  };
+  _disableButton = () => {
+    popupFormCardSubmitButton.classList.add("popup__submit-button-disable");
+    popupFormCardSubmitButton.setAttribute("disabled", true);
+  };
+
+  enableValidation(formElement, settings) {
+    this._setEventListeners(formElement, settings);
+    this._clearInputsErrors()
+    this._clearInputsStyles()
+    this._disableButton()
+  };
 }
