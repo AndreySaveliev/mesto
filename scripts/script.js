@@ -5,7 +5,7 @@ import {
   closePopup,
   clearValuesToNewCardForm,
   setValuesToProfileForm,
-  createCardExemplar
+  createCardExemplar,
 } from "./functions.js";
 import {
   profileEditButton,
@@ -21,22 +21,19 @@ import {
   profileName,
   editName,
   profileDescription,
-  profileEditDescription 
+  profileEditDescription,
 } from "./constants.js";
 
+const editFormValidator = new FormValidator(profileEditForm);
+const addCardValidator = new FormValidator(popupCardAddForm);
+
 profileEditButton.addEventListener("click", () => {
-  new FormValidator(profileEditForm).enableValidation(
-    profileEditForm,
-    settings
-  );
+  editFormValidator.enableValidation(profileEditForm, settings);
   setValuesToProfileForm();
   openPopup(profileEdit);
 });
 addCardButton.addEventListener("click", () => {
-  new FormValidator(popupCardAddForm).enableValidation(
-    popupCardAddForm,
-    settings
-  );
+  addCardValidator.enableValidation(popupCardAddForm, settings);
   clearValuesToNewCardForm();
   openPopup(popupCardAdd);
 });
@@ -61,21 +58,17 @@ page
     closePopup(profileEdit);
   });
 
-
 page.querySelector("#popup__form-card").addEventListener("submit", (event) => {
   event.preventDefault();
   const card = {
     name: event.target.elements["name"].value,
     link: event.target.elements["link"].value,
   };
-  closePopup(popupCardAdd);
   grid.prepend(createCardExemplar(card));
+  closePopup(popupCardAdd);
 });
 
 // СТАНДАРТНЫЕ КАРТОЧКИ
 initialCards.forEach((card) => {
   grid.append(createCardExemplar(card));
 });
-
-//этот блок не относится к валидация. эта часть кода отменяет все дейсвтия валидации
-// если пользователь просто закрыл попап, по нанажатию на крестик или оверлей

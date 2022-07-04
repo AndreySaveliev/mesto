@@ -1,4 +1,6 @@
 .popup__form-input-error {
+  display: block;
+  min-height: 30px;
   visibility: hidden;
   font-family: "Inter";
   font-style: normal;

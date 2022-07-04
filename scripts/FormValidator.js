@@ -64,13 +64,13 @@ export class FormValidator {
   };
   _clearInputsStyles = () => {
     inputs.forEach((input) => {
-      if (input.classList.contains("popup__input_show_error")) {
-        input.classList.remove("popup__input_show_error");
+      if (input.classList.contains(settings.inputErrorClass)) {
+        input.classList.remove(settings.inputErrorClass);
       }
     });
   };
   _disableButton = () => {
-    popupFormCardSubmitButton.classList.add("popup__submit-button-disable");
+    popupFormCardSubmitButton.classList.add(settings.inactiveButtonClass);
     popupFormCardSubmitButton.setAttribute("disabled", true);
   };
 

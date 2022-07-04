@@ -1,4 +1,5 @@
-// export consta fron Card
+
+// all const
 export const page = document.querySelector(".page");
 export const cell = page.querySelector("#cell").content;
 export const popupCardImg = page.querySelector(".popup-card__image");
