@@ -1,8 +1,11 @@
-import {settings, popupFormCardSubmitButton, errors, inputs} from "./constants.js";
+import {settings} from "./constants.js";
 
 export class FormValidator {
-  constructor(formElement) {
+  constructor(formElement, settings) {
     this._formElement = formElement;
+    this._buttonElement = formElement.querySelector(settings.buttonElement);
+    this._inputList = Array.from(this._formElement.querySelectorAll(settings.inputElement));
+    this._errorsList = Array.from(this._formElement.querySelectorAll(settings.errorElement));
   }
   _isValid(formElement, inputElement) {
     if (!inputElement.validity.valid) {
@@ -43,41 +46,34 @@ export class FormValidator {
     }
   }
   _setEventListeners(formElement, settings) {
-    const inputList = Array.from(
-      formElement.querySelectorAll(settings.inputElement)
-    );
-    const buttonElement = formElement.querySelector(settings.buttonElement);
-    inputList.forEach((inputElement) => {
+    this._inputList.forEach((inputElement) => {
       if (inputElement.value == "") {
-        this._toggleButtonState(inputList, buttonElement, settings);
+        this._toggleButtonState(this._inputList, this._buttonElement, settings);
       }
       inputElement.addEventListener("input", () => {
         this._isValid(formElement, inputElement);
-        this._toggleButtonState(inputList, buttonElement, settings);
+        this._toggleButtonState(this._inputList, this._buttonElement, settings);
       });
     });
   }
   _clearInputsErrors = () => {
-    errors.forEach((error) => {
+    this._errorsList.forEach((error) => {
       error.textContent = "";
     });
   };
   _clearInputsStyles = () => {
-    inputs.forEach((input) => {
+    this._inputList.forEach((input) => {
       if (input.classList.contains(settings.inputErrorClass)) {
         input.classList.remove(settings.inputErrorClass);
       }
     });
   };
   _disableButton = () => {
-    popupFormCardSubmitButton.classList.add(settings.inactiveButtonClass);
-    popupFormCardSubmitButton.setAttribute("disabled", true);
+    this._buttonElement.classList.add(settings.inactiveButtonClass);
+    this._buttonElement.setAttribute("disabled", true);
   };
 
   enableValidation(formElement, settings) {
     this._setEventListeners(formElement, settings);
-    this._clearInputsErrors()
-    this._clearInputsStyles()
-    this._disableButton()
   };
 }

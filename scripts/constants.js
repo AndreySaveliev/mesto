@@ -12,6 +12,7 @@ export const settings = {
   inactiveButtonClass: "popup__submit-button-disable",
   inputErrorClass: "popup__input_show_error",
   errorClass: "popup__form-input-error-active",
+  errorElement: ".popup__form-input-error"
 };
 export const popupForms = page.querySelectorAll(settings.formElement);
 export const profileEditButton = page.querySelector(".profile__edit-button");

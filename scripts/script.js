@@ -24,17 +24,23 @@ import {
   profileEditDescription,
 } from "./constants.js";
 
-const editFormValidator = new FormValidator(profileEditForm);
-const addCardValidator = new FormValidator(popupCardAddForm);
+const editFormValidator = new FormValidator(profileEditForm, settings);
+const addCardValidator = new FormValidator(popupCardAddForm, settings);
+editFormValidator.enableValidation(profileEditForm, settings);
+addCardValidator.enableValidation(popupCardAddForm, settings);
 
 profileEditButton.addEventListener("click", () => {
-  editFormValidator.enableValidation(profileEditForm, settings);
   setValuesToProfileForm();
+  editFormValidator._disableButton()
+  editFormValidator._clearInputsErrors()
+  editFormValidator._clearInputsStyles()
   openPopup(profileEdit);
 });
 addCardButton.addEventListener("click", () => {
-  addCardValidator.enableValidation(popupCardAddForm, settings);
   clearValuesToNewCardForm();
+  addCardValidator._disableButton()
+  addCardValidator._clearInputsErrors()
+  addCardValidator._clearInputsStyles()
   openPopup(popupCardAdd);
 });
 // ЗАКРЫТИЕ ПО НАЖАТИЮ НА ОВЕРЛЕЙ И КРЕСТИК
