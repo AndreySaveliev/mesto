@@ -1,4 +1,4 @@
-import {settings} from "./constants.js";
+import {settings} from "./variables.js";
 
 export class FormValidator {
   constructor(formElement, settings) {
@@ -56,19 +56,19 @@ export class FormValidator {
       });
     });
   }
-  _clearInputsErrors = () => {
+  clearInputsErrors = () => {
     this._errorsList.forEach((error) => {
       error.textContent = "";
     });
   };
-  _clearInputsStyles = () => {
+  clearInputsStyles = () => {
     this._inputList.forEach((input) => {
       if (input.classList.contains(settings.inputErrorClass)) {
         input.classList.remove(settings.inputErrorClass);
       }
     });
   };
-  _disableButton = () => {
+  disableButton = () => {
     this._buttonElement.classList.add(settings.inactiveButtonClass);
     this._buttonElement.setAttribute("disabled", true);
   };

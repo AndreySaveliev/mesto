@@ -22,7 +22,7 @@ import {
   editName,
   profileDescription,
   profileEditDescription,
-} from "./constants.js";
+} from "./variables.js";
 
 const editFormValidator = new FormValidator(profileEditForm, settings);
 const addCardValidator = new FormValidator(popupCardAddForm, settings);
@@ -31,16 +31,16 @@ addCardValidator.enableValidation(popupCardAddForm, settings);
 
 profileEditButton.addEventListener("click", () => {
   setValuesToProfileForm();
-  editFormValidator._disableButton()
-  editFormValidator._clearInputsErrors()
-  editFormValidator._clearInputsStyles()
+  editFormValidator.disableButton()
+  editFormValidator.clearInputsErrors()
+  editFormValidator.clearInputsStyles()
   openPopup(profileEdit);
 });
 addCardButton.addEventListener("click", () => {
   clearValuesToNewCardForm();
-  addCardValidator._disableButton()
-  addCardValidator._clearInputsErrors()
-  addCardValidator._clearInputsStyles()
+  addCardValidator.disableButton()
+  addCardValidator.clearInputsErrors()
+  addCardValidator.clearInputsStyles()
   openPopup(popupCardAdd);
 });
 // ЗАКРЫТИЕ ПО НАЖАТИЮ НА ОВЕРЛЕЙ И КРЕСТИК

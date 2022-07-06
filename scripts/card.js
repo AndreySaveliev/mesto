@@ -1,4 +1,4 @@
-import { cell, popupShowCard, popupCardTitle, popupCardImg,  } from "./constants.js";
+import { cell, popupShowCard, popupCardTitle, popupCardImg,  } from "./variables.js";
 import { openPopup } from "./functions.js";
 
 export class Card {

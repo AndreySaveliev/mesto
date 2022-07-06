@@ -1,8 +1,10 @@
-import { popupCardAddForm } from "./constants.js";
-import { editName } from "./constants.js";
-import { profileName } from "./constants.js";
-import { profileDescription } from "./constants.js";
-import { profileEditDescription } from "./constants.js";
+import {
+  popupCardAddForm,
+  editName,
+  profileName,
+  profileDescription,
+  profileEditDescription,
+} from "./variables.js";
 import { Card } from "./card.js";
 // ОТКРЫТИЕ ПОПАПА И ЗАКРЫТИЕ
 export const openPopup = (popup) => {
