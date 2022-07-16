@@ -1,5 +1,6 @@
-import { cell, popupShowCard, popupCardTitle, popupCardImg,  } from "./variables.js";
-import { openPopup } from "./functions.js";
+import { cell, popupShowCard,} from "./Variables.js";
+import { PopupWithImage } from "./PopupWithImage.js";
+
 
 export class Card {
   constructor(card) {
@@ -26,15 +27,11 @@ export class Card {
     });
     return  this._element;
   }
-  _openCard() {
-    popupCardImg.src = this._link;
-    popupCardTitle.textContent = this._name;
-    popupCardImg.alt = this._name;
-    openPopup(popupShowCard)
-  }
   _setOpenListener() {
      this._img.addEventListener('click', () => {
-      this._openCard()
+      const img = new PopupWithImage(popupShowCard)
+      img.open(this._name, this._link)
+      img.setEventListeners()
     })
   }
   _deleteCard() {
@@ -46,3 +43,4 @@ export class Card {
   }
 }
 
+``
