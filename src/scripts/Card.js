@@ -42,5 +42,3 @@ export class Card {
     event.target.classList.toggle('grid__like_active')
   }
 }
-
-``

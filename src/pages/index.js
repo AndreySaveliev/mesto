@@ -58,17 +58,7 @@ addCardButton.addEventListener("click", () => {
   addCardValidator.clearInputsErrors()
   addCardValidator.clearInputsStyles()
 });
-// ЗАКРЫТИЕ ПО НАЖАТИЮ НА ОВЕРЛЕЙ И КРЕСТИК
-// popups.forEach((popup) => {
-//   popup.addEventListener("mousedown", (event) => {
-//     if (
-//       event.target.classList.contains("popup") ||
-//       event.target.classList.contains("popup__close-button")
-//     ) {
-//       closePopup(popup);
-//     }
-//   });
-// });
+
 // ЗНАЧЕНИЕ ИМЕНИ И ОПИСАНИЯ ПРОФИЛЯ В ПОПАПЕ
 page
   .querySelector("#popup__profile-edit")
@@ -77,21 +67,6 @@ page
     profileInfo.setUserInfo(editName, profileEditDescription)
     profilePopup.close()
   });
-
-// page.querySelector("#popup__form-card").addEventListener("submit", (event) => {
-//   event.preventDefault();
-//   const card = {
-//     name: event.target.elements["name"].value,
-//     link: event.target.elements["link"].value,
-//   };
-//   grid.prepend(createCardExemplar(card));
-//   closePopup(popupCardAdd);
-// });
-
-// СТАНДАРТНЫЕ КАРТОЧКИ
-// initialCards.forEach((card) => {
-//   grid.append(createCardExemplar(card));
-// });
 
 
 const cards = new Section({item: initialCards, renderer: (cardItem) =>{
