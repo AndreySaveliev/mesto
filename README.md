@@ -1,5 +1,5 @@
 # Проект: Место  
-![Mesto](/images/header-logo.svg)
+![Mesto](./src/images/header-logo.svg/images/header-logo.svg)
 ### Обзор  
 ## Figma  
 * [Ссылка на макет в Figma](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)  
@@ -21,3 +21,12 @@ editButton.addEventListener("clic", pupupOpen);
 
 ## GgPages 
 * [Ссылка на gh pages](https://andreysaveliev.github.io/mesto/)
+
+## 8 спринт. мои мысли    
+За 4 дня отправил работу дважды на проверку. Первый раз отклонили потому что не грузились лого и аватар, я это как то починил и забил. Отправил на проверку. Приходит снова
+отклонение от проверки, потому что оказывается я ничего не починил. Открыл теорию, начал читать статью в инете, как через webpach загрузить картинки. У меня в конфиге все было норм. Зашел в теорию на практикуме, и там тупа строчка    
+```   
+//js    
+<img src="<%=require('./images/logo.png')%>" alt="Логотип"> 
+```   
+..... у меня нет слов.......
