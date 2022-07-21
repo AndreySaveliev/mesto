@@ -3,6 +3,7 @@ export class PopupWithForm extends Popup {
   constructor({popupElement, handleSubmit}) {
     super(popupElement)
     this._handleSubmit = handleSubmit
+    super.close()
   }
   _getInputValues() {
     this._inputList = this._popupElement.querySelectorAll('.popup__input')
@@ -12,23 +13,16 @@ export class PopupWithForm extends Popup {
     })
     return this._formValues
   }
-  setEventListeners() {
-    this._popupElement.addEventListener('mousedown', (event) => {
-      if (event.target.classList.contains("popup") ||
-      event.target.classList.contains("popup__close-button")
-      ) {
-        this.close()
-      }
-    })
-    this._popupElement.addEventListener('submit', (event) => {
-      event.preventDefault()
-      this._handleSubmit(this._getInputValues())
-      this.close()
-    })
-  }
-  close() {
-    this._popupElement.classList.remove("popup_opened");
-    document.removeEventListener("keydown", this._handleEscClose.bind(this));
-    this._popupElement.querySelector("#popup__form-card").reset()
-  }
+  setEventListeners() { 
+    super.setEventListeners()
+    this._popupElement.addEventListener('submit', (event) => { 
+      event.preventDefault() 
+      this._handleSubmit(this._getInputValues()) 
+      this.close() 
+    }) 
+  } 
+  close() { 
+    super.close()
+    this._popupElement.querySelector('.popup__form').reset() 
+  } 
 }

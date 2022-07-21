@@ -38,3 +38,4 @@ export const profileEditDescription = page.querySelector(
   ".popup__input_textbox_description"
 );
 export const profileEditForm = page.querySelector('#popup__profile-edit')
+export const gridCell = cell.querySelector('.grid__cell')

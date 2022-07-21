@@ -1,24 +1,21 @@
-import { cell, popupShowCard,} from "./Variables.js";
-import { PopupWithImage } from "./PopupWithImage.js";
-
-
 export class Card {
-  constructor(card) {
-    this._name = card.name;
-    this._link = card.link;
+  constructor(data, container, handleCardClick) {
+    this._container = container
+    this._name = data.name;
+    this._link = data.link;
+    this._handleCardClick = handleCardClick;
   }
   _getTemplate() {
-    const newCard = cell.querySelector(".grid__cell").cloneNode(true);
+    const newCard = this._container.cloneNode(true);
     return newCard
   }
-
   generateCard() {
     this._element = this._getTemplate()
     this._img = this._element.querySelector('.grid__img')
     this._img.src = this._link;
     this._img.alt = this._name;
     this._element.querySelector(".grid__name").textContent = this._name;
-    this._setOpenListener()
+    this._img.addEventListener('click', this._handleCardClick)
     this._element.querySelector('.grid__delete').addEventListener("click", () => {
       this._deleteCard()
     })
@@ -27,13 +24,7 @@ export class Card {
     });
     return  this._element;
   }
-  _setOpenListener() {
-     this._img.addEventListener('click', () => {
-      const img = new PopupWithImage(popupShowCard)
-      img.open(this._name, this._link)
-      img.setEventListeners()
-    })
-  }
+  
   _deleteCard() {
     this._element.remove()
     this._element = null

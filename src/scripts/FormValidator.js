@@ -1,4 +1,4 @@
-import {settings} from "./Variables.js";
+import {settings} from "../utils/constants.js";
 
 export class FormValidator {
   constructor(formElement, settings) {

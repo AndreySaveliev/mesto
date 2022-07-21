@@ -1,10 +1,12 @@
 import './index.css'
 import { FormValidator } from "../scripts/FormValidator.js";
-import { initialCards } from "../scripts/InitialCards.js";
+import { initialCards } from "../utils/initialCards.js";
 import {
+  createCard,
   setValuesToProfileForm,
-} from "../scripts/Functions.js";
+} from "../utils/utils.js";
 import {
+  popupShowCard,
   profileEditButton,
   addCardButton,
   page,
@@ -18,12 +20,14 @@ import {
   editName,
   profileDescription,
   profileEditDescription,
-} from "../scripts/Variables.js";
-import { Popup } from "../scripts/Popup.js";
+  cell,
+  gridCell
+} from "../utils/constants.js";
 import { PopupWithForm } from "../scripts/PopupWithForm.js";
-import { Card } from "../scripts/card.js";
 import { UserInfo } from "../scripts/UserInfo.js";
 import { Section } from "../scripts/Section.js";
+import { Card } from '../scripts/card';
+import { PopupWithImage } from '../scripts/PopupWithImage';
 const editFormValidator = new FormValidator(profileEditForm, settings);
 const addCardValidator = new FormValidator(popupCardAddForm, settings);
 editFormValidator.enableValidation(profileEditForm, settings);
@@ -32,18 +36,28 @@ addCardValidator.enableValidation(popupCardAddForm, settings);
 const profileInfo = new UserInfo(profileName, profileDescription)
 ///
 // popups
-const profilePopup = new Popup(profileEdit)
-profilePopup.setEventListeners()
-const newCardPopup = new Popup(popupCardAdd)
-newCardPopup.setEventListeners()
+
+//popup with img
+const imgPopup = new PopupWithImage({popupElement: popupShowCard, handleOpenCard: (data) => {
+  console.log(data)
+  imgPopup.open(data.name, data.link)
+}})
 ///
 // popup with form
-const newCardForm = new PopupWithForm({popupElement: popupCardAdd, handleSubmit: (data) => {
-  const card = new Card(data)
-  const cardEl = card.generateCard()
-  grid.prepend(cardEl)
+const popupAddCard = new PopupWithForm({popupElement: popupCardAdd, handleSubmit: (data) => {
+  const cardEl = createCard(data, gridCell, () => {
+    imgPopup.open(data.name, data.link)
+  })
+  const newCard = new Section({item: cardEl, rednerer: {}}, grid)
+  newCard.addItem(cardEl)
 }})
-newCardForm.setEventListeners()
+popupAddCard.setEventListeners()
+
+const profilePopup = new PopupWithForm({popupElement: profileEdit, handleSubmit: (data) =>{
+  profileName.textContent = data.name;
+  profileDescription.textContent = data.description;
+}}) 
+profilePopup.setEventListeners() 
 ///
 profileEditButton.addEventListener("click", () => {
   setValuesToProfileForm(profileInfo.getUserInfo())
@@ -53,26 +67,16 @@ profileEditButton.addEventListener("click", () => {
   profilePopup.open()
 });
 addCardButton.addEventListener("click", () => {
-  newCardPopup.open()
+  popupAddCard.open()
   addCardValidator.disableButton()
   addCardValidator.clearInputsErrors()
   addCardValidator.clearInputsStyles()
 });
 
-// ЗНАЧЕНИЕ ИМЕНИ И ОПИСАНИЯ ПРОФИЛЯ В ПОПАПЕ
-page
-  .querySelector("#popup__profile-edit")
-  .addEventListener("submit", (event) => {
-    event.preventDefault();
-    profileInfo.setUserInfo(editName, profileEditDescription)
-    profilePopup.close()
-  });
-
-
-const cards = new Section({item: initialCards, renderer: (cardItem) =>{
-  const newCard = new Card(cardItem)
-  const cardEl = newCard.generateCard()
-  cards.addItem(cardEl)
-}})
-cards.rendererItem()
-
+const cards = new Section({item: initialCards, renderer: (data) =>{ 
+  const newCard = createCard(data, gridCell, ()=> {
+    imgPopup.open(data.name, data.link)
+  })
+  cards.addItem(newCard) 
+}}, grid) 
+cards.renderItems()
