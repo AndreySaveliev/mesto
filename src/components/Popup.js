@@ -12,7 +12,7 @@ export class Popup {
     document.removeEventListener("keydown", this._handleEscClose);
   }
   _handleEscClose(event) {
-    if (event.keyCode === 27) {
+    if (event.key === "Escape") {
       this.close();
     }
   }

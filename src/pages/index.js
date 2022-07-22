@@ -1,5 +1,5 @@
 import './index.css'
-import { FormValidator } from "../scripts/FormValidator.js";
+import { FormValidator } from "../components/FormValidator.js";
 import { initialCards } from "../utils/initialCards.js";
 import {
   createCard,
@@ -9,7 +9,6 @@ import {
   popupShowCard,
   profileEditButton,
   addCardButton,
-  page,
   grid,
   popupCardAddForm,
   settings,
@@ -17,17 +16,13 @@ import {
   profileEditForm,
   profileEdit,
   profileName,
-  editName,
   profileDescription,
-  profileEditDescription,
-  cell,
   gridCell
 } from "../utils/constants.js";
-import { PopupWithForm } from "../scripts/PopupWithForm.js";
-import { UserInfo } from "../scripts/UserInfo.js";
-import { Section } from "../scripts/Section.js";
-import { Card } from '../scripts/card';
-import { PopupWithImage } from '../scripts/PopupWithImage';
+import { PopupWithForm } from "../components/PopupWithForm.js";
+import { UserInfo } from "../components/UserInfo.js";
+import { Section } from "../components/Section.js";
+import { PopupWithImage } from '../components/PopupWithImage';
 const editFormValidator = new FormValidator(profileEditForm, settings);
 const addCardValidator = new FormValidator(popupCardAddForm, settings);
 editFormValidator.enableValidation(profileEditForm, settings);
@@ -38,24 +33,20 @@ const profileInfo = new UserInfo(profileName, profileDescription)
 // popups
 
 //popup with img
-const imgPopup = new PopupWithImage({popupElement: popupShowCard, handleOpenCard: (data) => {
-  console.log(data)
-  imgPopup.open(data.name, data.link)
-}})
+const imgPopup = new PopupWithImage(popupShowCard)
+imgPopup.setEventListeners()
 ///
 // popup with form
 const popupAddCard = new PopupWithForm({popupElement: popupCardAdd, handleSubmit: (data) => {
   const cardEl = createCard(data, gridCell, () => {
     imgPopup.open(data.name, data.link)
   })
-  const newCard = new Section({item: cardEl, rednerer: {}}, grid)
-  newCard.addItem(cardEl)
+  cards.addItem(cardEl)
 }})
 popupAddCard.setEventListeners()
 
 const profilePopup = new PopupWithForm({popupElement: profileEdit, handleSubmit: (data) =>{
-  profileName.textContent = data.name;
-  profileDescription.textContent = data.description;
+  profileInfo.setUserInfo(data.name, data.description)
 }}) 
 profilePopup.setEventListeners() 
 ///

@@ -2,7 +2,7 @@ import {
   editName,
   profileEditDescription,
 } from "./constants.js";
-import { Card } from "../scripts/card.js";
+import { Card } from "../components/card.js";
 
 
 // ЗНАЧЕНИЯ ПОПАПА РЕД. ПРОФИЛЯ
