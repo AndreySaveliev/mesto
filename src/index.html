@@ -15,8 +15,11 @@
     </header>
     <main class="content">
       <section class="profile">
-        <img class="profile__pic" src="<%=require('./images/profile-pic.jpg')%>" alt="фото профиля">
-        <div class="profile__info">
+        <div class="profile__pic-block">
+          <img class="profile__pic" src="<%=require('./images/profile-pic.jpg')%>" alt="фото профиля">
+          <button type="button" class="profile__pic-edit"></button>
+        </div>
+          <div class="profile__info">
           <div class="profile__edit">
             <h1 class="profile__name">Жак-Ив Кусто</h1>
             <button type="button" class="profile__edit-button"></button>
@@ -33,6 +36,7 @@
             <div class="grid__description">
               <h2 class="grid__name"></h2>
               <button type="button" class="grid__like"></button>
+              <p class="grid__like-number">0</p>
             </div>
           </div>
         </template>
@@ -83,6 +87,26 @@
             </div>
             <button type="button" aria-label="close" class="popup-card__close-button-card popup__close-button"></button>
           </div>
+      </section>
+      <section class="popup popup-delete-card">
+        <div class="popup-delete__block">
+          <h2 class="popup__title">Вы уверены?</h2>
+          <button type="submit" class="popup__submit-button popup__submit-button_delete-card">Да</button>
+        </div>
+        <button type="button" aria-label="close" class="popup__close-button popup__close-button_delete-card"></button>
+      </section>
+      <section class="popup popup-change-profile-pic">
+        <div class="popup-change-profile-pic__block">
+          <h2 class="popup__title">Обновить аватар</h2>
+          <div class="popup__change-profile-pic-input">
+            <form class="popup__form">
+              <input id="profilePicLink" type="url" name="link" class="popup__input popup__input_profile_pic" value="" placeholder="Ссылка на аватарку" required autocomplete="off">
+              <span class="profilePickLink-error popup__form-input-error"></span>
+            </form>
+          </div>
+          <button type="submit" class="popup__submit-button popup__submit-button_change-profile-pic">Сохранить</button>
+        </div>
+        <button type="button" aria-label="close" class="popup-change-profile-pic__close-button popup__close-button"></button>
       </section>
     </main>
     <footer class="footer">
