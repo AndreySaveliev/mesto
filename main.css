@@ -35,8 +35,8 @@
 .profile__name{color:#fff;font-family:Inter,Arial,sans-serif;font-size:42px;font-weight:500;line-height:48px;margin:0 0 16px;max-width:294px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}@media screen and (max-width:767px){.profile__name{font-size:27px;line-height:33px;margin:0 auto 16px;text-align:center;width:189px}}
 .profile__pic{border-radius:50%;cursor:pointer;height:120px;transition:.2s;width:120px}@media screen and (max-width:767px){.profile__pic{margin:0 auto 22.25px}}
 .grid__delete{background-color:transparent;background-image:url(ce3b64935accf9b8212e.svg);background-size:contain;border:0;cursor:pointer;height:19px;position:absolute;right:20px;top:20px;transition:.2s;width:18px;z-index:2}.grid__delete:hover{opacity:.6}
-.profile__pic-edit{background-color:transparent;background-image:url(ae1a976ddb506239e9f0.svg);background-position:50%;background-repeat:no-repeat;background-size:26px;border:none;cursor:pointer;height:120px;left:0;opacity:0;padding:0;position:absolute;transition:.2s;width:120px}
-.profile__pic-block:hover .profile__pic-edit{opacity:1;z-index:3}.profile__pic-block:hover .profile__pic{opacity:.2}
+.profile__pic-edit{background-color:transparent;background-image:url(ae1a976ddb506239e9f0.svg);background-position:50%;background-repeat:no-repeat;background-size:26px;border:none;cursor:pointer;height:120px;left:0;opacity:0;padding:0;position:absolute;transition:.2s;width:120px}@media screen and (max-width:767px){.profile__pic-edit{left:100px}}
+.profile__pic-block{width:120px}.profile__pic-block:hover .profile__pic-edit{opacity:1;z-index:3}.profile__pic-block:hover .profile__pic{opacity:.2}@media screen and (max-width:767px){.profile__pic-block{margin:auto}}
 .popup__input_show_error{border-bottom-color:red}
 .popup__form-input-error-active{visibility:visible!important}
 .popup__form-input-error{color:red;display:block;font-family:Inter;font-size:12px;font-style:normal;font-weight:400;line-height:15px;min-height:30px;visibility:hidden}
@@ -46,8 +46,8 @@
 .popup__name-input{margin:0 36px}
 .popup__description-input{margin:0 36px 17px}
 .popup-delete__block{align-self:center;background-color:#fff;border-radius:10px;box-shadow:0 0 25px rgba(0,0,0,.15);margin:0 auto;width:430px;z-index:2}
-.popup__close-button_delete-card{background-color:transparent;background-image:url(039f1f5203f653b4bacd.svg);background-size:contain;border:0;cursor:pointer;margin:-40px 0 0 8px;max-height:32px;min-width:32px;position:relative;right:824px;top:423px;transition:.2s;z-index:2}.popup__close-button_delete-card:hover{opacity:.6}@media screen and (max-width:767px){.popup__close-button_delete-card{max-height:20px;min-width:20px;right:0}}
-.popup-change-profile-pic__block{align-self:center;background-color:#fff;border-radius:10px;box-shadow:0 0 25px rgba(0,0,0,.15);margin:0 auto;width:430px;z-index:2}
+.popup__close-button_delete-card{background-color:transparent;background-image:url(039f1f5203f653b4bacd.svg);background-size:contain;border:0;cursor:pointer;margin:-40px 0 0 8px;max-height:32px;min-width:32px;position:relative;right:824px;top:423px;transition:.2s;z-index:2}.popup__close-button_delete-card:hover{opacity:.6}@media screen and (max-width:767px){.popup__close-button_delete-card{max-height:20px;min-width:20px;right:256px;top:330px}}
+.popup-change-profile-pic__block{align-self:center;background-color:#fff;border-radius:10px;box-shadow:0 0 25px rgba(0,0,0,.15);margin:0 auto;width:430px;z-index:2}@media screen and (max-width:767px){.popup-change-profile-pic__block{width:282px}}
 .popup__change-profile-pic-input{margin:0 36px 17px}
-.popup-change-profile-pic__close-button{background-color:transparent;background-image:url(039f1f5203f653b4bacd.svg);background-size:contain;border:0;cursor:pointer;margin:-40px 0 0 8px;max-height:32px;min-width:32px;position:relative;right:823px;top:386px;transition:.2s;z-index:2}.popup-change-profile-pic__close-button:hover{opacity:.6}@media screen and (max-width:767px){.popup-change-profile-pic__close-button{max-height:20px;min-width:20px;right:0}}
+.popup-change-profile-pic__close-button{background-color:transparent;background-image:url(039f1f5203f653b4bacd.svg);background-size:contain;border:0;cursor:pointer;margin:-40px 0 0 8px;max-height:32px;min-width:32px;position:relative;right:-430px;top:-134px;transition:.2s;z-index:2}.popup-change-profile-pic__close-button:hover{opacity:.6}@media screen and (max-width:767px){.popup-change-profile-pic__close-button{max-height:20px;min-width:20px;right:-254px;top:-152px}}
 
