@@ -24,7 +24,8 @@ import {
   popupDeleteCard,
   deleteButton,
   profileImg,
-  popupAvatarForm
+  popupAvatarForm,
+  page
 } from "../utils/constants.js";
 import { PopupWithForm } from "../components/PopupWithForm.js";
 import { UserInfo } from "../components/UserInfo.js";
@@ -55,7 +56,19 @@ api.getUser()
   
 ///
 /// popups
-const deleteCardPopup = new PopupWithForm({popupElement: popupDeleteCard, handleSubmit: {}}) 
+const deleteCardPopup = new PopupWithForm({popupElement: popupDeleteCard, handleSubmit: (data) => {
+  let id = popupDeleteCard.querySelector('.popup__submit-button').name
+  api.deleteCard(id)
+      .then((res) => { 
+        // this._deleteCardPopup.close()
+        deleteCardPopup.close()
+        let oneCard = document.getElementById(`${id}`)
+        oneCard.remove()
+        oneCard = null
+        // this._element = null
+        // this._submitButton.removeEventListener('click', () => this.deleteCard(id))
+      })
+}})
 deleteCardPopup.setEventListeners()
 /// popup with img
 const imgPopup = new PopupWithImage(popupShowCard)

@@ -14,3 +14,9 @@
   border: none;
   padding: 0;
 }
+
+@media screen and (max-width: 767px) {
+  .profile__pic-edit {
+    left: 100px;
+  }
+}

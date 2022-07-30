@@ -32,7 +32,9 @@ export class Card {
       this._element.querySelector('.grid__delete').addEventListener("click", (event) => {
         event.preventDefault()
         this._deleteCardPopup.open()
-        this._submitButton.addEventListener('click', () => this._deleteCard(this._element.id)) 
+        console.log('ya loh')
+        this._submitButton.name = this._element.id
+        // this._submitButton.addEventListener('click', () => this.deleteCard(this._element.id)) 
       })
     }
     this._likes.forEach((like) => {
@@ -60,16 +62,15 @@ export class Card {
   _isMine() {
     return this._owner._id === this._user._id ? true : false
   }
-  _deleteCard(id) {
-    api.deleteCard(id)
-      .then((res) => {
-        console.log('deleted')   
-        this._deleteCardPopup.close()
-        this._element.remove()
-        this._element = null
-        this._submitButton.removeEventListener('click', () => this._deleteCard(id))
-      })
-  }; 
+  // deleteCard(id) {
+  //   api.deleteCard(id)
+  //     .then((res) => { 
+  //       this._deleteCardPopup.close()
+  //       this._element.remove()
+  //       this._element = null
+  //       this._submitButton.removeEventListener('click', () => this.deleteCard(id))
+  //     })
+  // }; 
   _likeCard(event) {
     event.target.classList.toggle('grid__like_active')
   }

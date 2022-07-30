@@ -1,3 +1,7 @@
+.profile__pic-block {
+  width: 120px;
+}
+
 .profile__pic-block:hover  .profile__pic-edit {
   opacity: 1;
   z-index: 3;
@@ -5,4 +9,9 @@
 
 .profile__pic-block:hover  .profile__pic {
   opacity: 0.2;
+}
+@media screen and (max-width: 767px) {
+  .profile__pic-block {
+    margin: auto;
+  }
 }
