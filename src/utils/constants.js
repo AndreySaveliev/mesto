@@ -39,3 +39,9 @@ export const profileEditDescription = page.querySelector(
 );
 export const profileEditForm = page.querySelector('#popup__profile-edit')
 export const gridCell = cell.querySelector('.grid__cell')
+export const popupProfileEditPic = page.querySelector('.popup-change-profile-pic')
+export const profileEditPicButton = page.querySelector('.profile__pic-edit')
+export const popupDeleteCard = page.querySelector('.popup-delete-card')
+export const deleteButton = page.querySelector('.popup__submit-button_delete-card')
+export const profileImg = page.querySelector('.profile__pic')
+export const popupAvatarForm = page.querySelector('#popup__form-avatar')

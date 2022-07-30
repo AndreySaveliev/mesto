@@ -1,0 +1,135 @@
+import { api } from "../pages"
+
+export class Api {
+  constructor(options) {
+    this._authorization = options.authorization
+    this._cohort = options.cohort
+    this._baseURL = options.baseURL
+    this._user = {}
+  }
+  getUser() {
+   return fetch(`${this._baseURL}/users/me`, {
+      headers: {
+        authorization: this._authorization
+      }
+    })
+      .then(res => {
+        if (res.ok) {
+          return res.json()
+        }
+        return Promise.reject(`Ошибка: ${res.status}`)
+      })
+  }
+  getInitialCards() {
+    return fetch(`${this._baseURL}/cards`, {
+       headers: {
+         authorization: this._authorization
+       }
+     })
+       .then(res => {
+        if (res.ok) {
+          return res.json()
+        }
+        return Promise.reject(`Ошибка: ${res.status}`)
+       })
+   }
+  saveUserData(name, about) {
+    return fetch(`${this._baseURL}/users/me`, {
+      method: "PATCH",
+      headers: {
+        authorization: this._authorization,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: name,
+        about: about,
+      })
+    })
+      .then(res => {
+        if (res.ok) {
+          return res.json()
+        }
+        return Promise.reject(`Ошибка: ${res.status}`)
+       })
+  }
+  postCard(name, link) {
+    return fetch(`${this._baseURL}/cards`,{
+      method: "POST",
+      headers: {
+        authorization: this._authorization,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        name: name,
+        link: link,
+      })
+    })
+      .then(res => {
+        if (res.ok) {
+          return res.json()
+        }
+        return Promise.reject(`Ошибка: ${res.status}`)
+      })
+  }
+  deleteCard(cardId) {
+    return fetch(`${this._baseURL}/cards/${cardId}`, {
+      method: "DELETE",
+      headers: {
+        authorization: this._authorization,
+      }
+    })
+      .then(res => {
+        if (res.ok) {
+          return res.json()
+        }
+        return Promise.reject(`Ошибка ${res.status}`)
+      })
+  }
+  like(cardId) {
+    return fetch(`${this._baseURL}/cards/${cardId}/likes`,{
+      method: "PUT",
+      headers: {
+        authorization: this._authorization
+      }
+    })
+      .then(res => {
+        if (res.ok) {
+          return res.json()
+        }
+        return Promise.reject(`Ошибка ${res.status}`)
+      })
+  }
+  unlike(cardId) {
+    return fetch(`${this._baseURL}/cards/${cardId}/likes`,{
+      method: "DELETE",
+      headers: {
+        authorization: this._authorization
+      }
+    })
+      .then(res => {
+        if (res.ok) {
+          return res.json()
+        }
+        return Promise.reject(`Ошибка ${res.status}`)
+      })
+  }
+  changeProfilePic(avatar) {
+    return fetch(`https://mesto.nomoreparties.co/v1/cohort-47/users/me/avatar `, {
+      method: "PATCH",
+      headers: {
+        authorization: this._authorization,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        avatar: avatar
+      })
+    })
+      .then(res => {
+        if (res.ok) {
+          return res.json()
+        }
+        return Promise.reject(`Ошибка ${res.status}`)
+      })
+  }
+}
+

@@ -16,21 +16,21 @@
     <main class="content">
       <section class="profile">
         <div class="profile__pic-block">
-          <img class="profile__pic" src="<%=require('./images/profile-pic.jpg')%>" alt="фото профиля">
+          <img class="profile__pic" src="" alt="фото профиля">
           <button type="button" class="profile__pic-edit"></button>
         </div>
           <div class="profile__info">
           <div class="profile__edit">
-            <h1 class="profile__name">Жак-Ив Кусто</h1>
+            <h1 class="profile__name"></h1>
             <button type="button" class="profile__edit-button"></button>
           </div>
-          <p class="profile__description">Исследователь океана</p>
+          <p class="profile__description"></p>
         </div>
         <button type="button" class="profile__add-card"></button>
       </section>
       <section class="grid">
         <template id="cell">
-          <div class="grid__cell">
+          <div class="grid__cell" id="">
             <button class="grid__delete"></button>
             <img class="grid__img">
             <div class="grid__description">
@@ -90,23 +90,25 @@
       </section>
       <section class="popup popup-delete-card">
         <div class="popup-delete__block">
-          <h2 class="popup__title">Вы уверены?</h2>
-          <button type="submit" class="popup__submit-button popup__submit-button_delete-card">Да</button>
+          <form class="popup__form" id="" novalidate>
+            <h2 class="popup__title">Вы уверены?</h2>
+            <button type="submit" class="popup__submit-button popup__submit-button_delete-card">Да</button>
+          </form>
         </div>
         <button type="button" aria-label="close" class="popup__close-button popup__close-button_delete-card"></button>
       </section>
       <section class="popup popup-change-profile-pic">
         <div class="popup-change-profile-pic__block">
-          <h2 class="popup__title">Обновить аватар</h2>
-          <div class="popup__change-profile-pic-input">
-            <form class="popup__form">
-              <input id="profilePicLink" type="url" name="link" class="popup__input popup__input_profile_pic" value="" placeholder="Ссылка на аватарку" required autocomplete="off">
-              <span class="profilePickLink-error popup__form-input-error"></span>
+          <h3 class="popup__title">Обновить аватар</h3>
+          <button type="button" aria-label="close" class="popup-change-profile-pic__close-button popup__close-button"></button>
+            <form class="popup__form" id="popup__form-avatar" novalidate>
+              <div class="popup__change-profile-pic-input">  
+                <input id="profilePicLink" type="url" name="link" class="popup__input popup__input_profile_pic" value="" placeholder="Ссылка на аватарку" required autocomplete="off">
+                <span class="profilePicLink-error popup__form-input-error"></span>
+              </div>
+              <button type="submit" class="popup__submit-button popup__submit-button_change-profile-pic">Сохранить</button>
             </form>
-          </div>
-          <button type="submit" class="popup__submit-button popup__submit-button_change-profile-pic">Сохранить</button>
         </div>
-        <button type="button" aria-label="close" class="popup-change-profile-pic__close-button popup__close-button"></button>
       </section>
     </main>
     <footer class="footer">
