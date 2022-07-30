@@ -68,6 +68,7 @@ const deleteCardPopup = new PopupWithForm({popupElement: popupDeleteCard, handle
         // this._element = null
         // this._submitButton.removeEventListener('click', () => this.deleteCard(id))
       })
+      .catch((err) => console.log(err))
 }})
 deleteCardPopup.setEventListeners()
 /// popup with img
@@ -84,6 +85,7 @@ const popupAddCard = new PopupWithForm({popupElement: popupCardAdd, handleSubmit
       }, {_id: id}, deleteCardPopup)
       grid.prepend(cardEl)
     })
+    .catch((err) => console.log(err))
     .finally(renderSaving(false, event))
 }})
 popupAddCard.setEventListeners()
@@ -92,6 +94,7 @@ const profilePopup = new PopupWithForm({popupElement: profileEdit, handleSubmit:
   api.saveUserData(data.name, data.description)
     .then((res) => {
       profileInfo.setUserInfo(res.name, res.about)})
+    .catch((err) => console.log(err))
     .finally(renderSaving(false, event))
 }}) 
 profilePopup.setEventListeners() 
@@ -100,6 +103,7 @@ const profilePicPopup = new PopupWithForm({popupElement: popupProfileEditPic, ha
   api.changeProfilePic(data.link) 
     .then((res) => {
       profileImg.src = res.avatar}) 
+    .catch((err) => console.log(err))
     .finally(renderSaving(false, event))
 }})
 profilePicPopup.setEventListeners()
@@ -142,6 +146,7 @@ api.getInitialCards()
       }}, grid) 
       cards.renderItems()
       })
+      .catch((err) => console.log(err))
   })
   
 

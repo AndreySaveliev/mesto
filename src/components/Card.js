@@ -32,7 +32,6 @@ export class Card {
       this._element.querySelector('.grid__delete').addEventListener("click", (event) => {
         event.preventDefault()
         this._deleteCardPopup.open()
-        console.log('ya loh')
         this._submitButton.name = this._element.id
         // this._submitButton.addEventListener('click', () => this.deleteCard(this._element.id)) 
       })
